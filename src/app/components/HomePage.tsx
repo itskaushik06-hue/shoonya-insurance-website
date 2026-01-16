@@ -11,11 +11,15 @@ import {
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
+import { FloatingCTAs } from "./FloatingCTAs";
 
 export function HomePage() {
   return (
     <div className="min-h-screen bg-white page-transition">
       <Header currentPage="home" />
+
+      {/* Floating CTAs */}
+      <FloatingCTAs />
 
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-6 lg:px-8 pt-20 pb-24">
@@ -33,12 +37,11 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Divider */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="border-t border-grey-200"></div>
       </div>
 
-      {/* What We Do Section */}
+      {/* What We Do */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
         <div className="text-center mb-16">
           <h2>What We Do</h2>
@@ -49,43 +52,35 @@ export function HomePage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white border border-grey-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-              <Shield className="w-6 h-6 text-primary" />
-            </div>
+          <div className="bg-white border border-grey-200 rounded-lg p-8">
+            <Shield className="w-6 h-6 text-primary mb-4" />
             <h3 className="mb-4">Insurance Audit</h3>
             <p className="text-grey-600">
-              We analyze your current coverage, identify gaps,
-              and ensure you are protected against real risks.
+              We analyze coverage, identify gaps, and ensure
+              protection against real risks.
             </p>
           </div>
 
-          <div className="bg-white border border-grey-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-              <FileCheck className="w-6 h-6 text-primary" />
-            </div>
+          <div className="bg-white border border-grey-200 rounded-lg p-8">
+            <FileCheck className="w-6 h-6 text-primary mb-4" />
             <h3 className="mb-4">Tailor Made Policies</h3>
             <p className="text-grey-600">
-              Every individual and business is unique. We
-              customize coverage to match your life stage and
-              risk profile.
+              Coverage designed around your life stage and
+              business realities.
             </p>
           </div>
 
-          <div className="bg-white border border-grey-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-              <HeartHandshake className="w-6 h-6 text-primary" />
-            </div>
+          <div className="bg-white border border-grey-200 rounded-lg p-8">
+            <HeartHandshake className="w-6 h-6 text-primary mb-4" />
             <h3 className="mb-4">Claim Support</h3>
             <p className="text-grey-600">
-              When it matters most, we guide you through claims
-              with empathy, clarity, and experience.
+              Human guidance through claims with clarity and
+              experience.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Divider */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="border-t border-grey-200"></div>
       </div>
@@ -101,56 +96,41 @@ export function HomePage() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
+          <div className="border border-grey-200 rounded-lg p-8">
             <Users className="w-6 h-6 text-primary mb-4" />
-            <h4 className="mb-3">Individual Insurance</h4>
-            <p className="text-sm text-grey-600">
-              Health, accident, travel, motor, and home coverage.
-            </p>
+            <h4>Individual Insurance</h4>
           </div>
-
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
+          <div className="border border-grey-200 rounded-lg p-8">
             <Building2 className="w-6 h-6 text-primary mb-4" />
-            <h4 className="mb-3">Business Insurance</h4>
-            <p className="text-sm text-grey-600">
-              Property, liability, and office protection.
-            </p>
+            <h4>Business Insurance</h4>
           </div>
-
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
+          <div className="border border-grey-200 rounded-lg p-8">
             <Factory className="w-6 h-6 text-primary mb-4" />
-            <h4 className="mb-3">Industrial Insurance</h4>
-            <p className="text-sm text-grey-600">
-              Engineering, machinery, and project coverage.
-            </p>
+            <h4>Industrial Insurance</h4>
           </div>
-
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
+          <div className="border border-grey-200 rounded-lg p-8">
             <Landmark className="w-6 h-6 text-primary mb-4" />
-            <h4 className="mb-3">Specialized Insurance</h4>
-            <p className="text-sm text-grey-600">
-              Marine, cyber, credit, and financial risks.
-            </p>
+            <h4>Specialized Insurance</h4>
           </div>
         </div>
       </section>
 
-      {/* Divider */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="border-t border-grey-200"></div>
       </div>
 
       {/* Final CTA */}
-      <section className="max-w-5xl mx-auto px-6 lg:px-8 py-24">
+      <section
+        id="final-cta"
+        className="max-w-5xl mx-auto px-6 lg:px-8 py-24"
+      >
         <div className="text-center space-y-6">
           <h2>Let Us Talk About Your Coverage</h2>
-          <p className="text-lg text-grey-600 max-w-3xl mx-auto leading-relaxed">
-            Real humans. Real care. Experts who listen, respect
-            your time, and help you find the right protection.
+          <p className="text-lg text-grey-600 max-w-3xl mx-auto">
+            Real humans. Real care. Experts who respect your
+            time and guide you to the right protection.
           </p>
-          <div className="pt-4">
-            <CTAButtons variant="large" className="justify-center" />
-          </div>
+          <CTAButtons variant="large" className="justify-center" />
         </div>
       </section>
 
