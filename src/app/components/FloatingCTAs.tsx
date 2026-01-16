@@ -6,7 +6,6 @@ export function FloatingCTAs() {
 
   useEffect(() => {
     const target = document.getElementById("final-cta");
-
     if (!target) return;
 
     const observer = new IntersectionObserver(
@@ -17,21 +16,21 @@ export function FloatingCTAs() {
     );
 
     observer.observe(target);
-
     return () => observer.disconnect();
   }, []);
 
   if (hidden) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 animate-float-in">
       {/* Schedule Call */}
       <a
         href="#"
-        className="group flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition"
+        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg transition hover:scale-105"
         aria-label="Schedule a Call"
       >
-        <Calendar className="w-6 h-6" />
+        <span className="absolute inset-0 rounded-full animate-ping-slow bg-primary/30"></span>
+        <Calendar className="w-6 h-6 relative z-10" />
       </a>
 
       {/* WhatsApp */}
@@ -39,7 +38,7 @@ export function FloatingCTAs() {
         href="https://wa.me/919419286666"
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition"
+        className="flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg transition hover:scale-105"
         aria-label="WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />
