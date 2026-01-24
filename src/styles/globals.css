@@ -270,3 +270,57 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #a3a3a3;
 }
+
+@keyframes float-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-float-in {
+  animation: float-in 0.4s ease-out forwards;
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes footerFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-footerFloat {
+  animation: footerFloat 12s ease-in-out infinite;
+}
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-heroFade {
+  animation: heroFade 1s ease-out forwards;
+}
+
