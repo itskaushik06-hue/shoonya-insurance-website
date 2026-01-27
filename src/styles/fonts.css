@@ -1,2 +1,16 @@
 /* Import DB Sans font family */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+:root {
+  --font-display: "DB Sans", system-ui, sans-serif;
+  --font-body: "DB Sans", system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+}

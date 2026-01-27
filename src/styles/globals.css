@@ -319,6 +319,20 @@ html {
     transform: translateY(0);
   }
 }
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-heroFade {
+  animation: heroFade 0.9s ease-out forwards;
+}
 
 .animate-heroFade {
   animation: heroFade 1s ease-out forwards;

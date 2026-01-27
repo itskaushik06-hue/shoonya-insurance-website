@@ -4,38 +4,70 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative h-screen w-full overflow-hidden"
+      className="
+        w-full
+        min-h-screen
+        bg-white
+        flex
+        flex-col
+        items-center
+        pt-12
+        md:pt-24
+      "
     >
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 h-full w-full object-cover"
+      {/* IMAGE */}
+      <div className="relative w-full flex justify-center">
+        <img
+          src="/images/hero.png"
+          alt="Shoonya Insurance Brokers"
+          className="
+            w-full
+            max-w-[320px]
+            md:max-w-[640px]
+            h-auto
+            object-contain
+          "
+        />
+      </div>
+
+      {/* TEXT */}
+      <div
+        className="
+          relative
+          z-10
+          mt-6
+          md:-mt-32   /* overlap ONLY on desktop */
+          px-6
+          text-center
+          max-w-xl
+          md:max-w-2xl
+          animate-heroFade
+        "
       >
-        <source src="/videos/shoonya-hero.mp4" type="video/mp4" />
-      </video>
+        <p className="text-[11px] md:text-sm tracking-wide text-grey-500">
+          Claim Assistance · Customised Insurance · A Safer and Greener Future
+        </p>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/55" />
+        <a
+          href="#final-cta"
+          className="
+            block
+            mt-3
+            font-display
+            text-xl
+            md:text-[36px]
+            leading-snug
+            text-grey-700
+            hover:text-primary
+            transition-colors
+          "
+        >
+          Let’s start with a conversation
+        </a>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center px-6 lg:px-8">
-        <div className="max-w-5xl text-center space-y-8 animate-heroFade">
-          <h1 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
-            Insurance that protects today  
-            <br />
-            and gives back to tomorrow.
-          </h1>
-
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-            For every insurance we place, we contribute to planting trees.
-            Because real protection goes beyond policies, it extends to
-            the world we all share.
-          </p>
-        </div>
+        <p className="mt-2 text-sm md:text-base text-grey-600 leading-relaxed">
+          No pressure. No sales calls. Just humans who care.
+        </p>
       </div>
     </section>
   );

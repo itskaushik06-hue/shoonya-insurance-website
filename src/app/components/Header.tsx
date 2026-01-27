@@ -7,78 +7,97 @@ interface HeaderProps {
 }
 
 export function Header({ currentPage = "home" }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight * 0.6);
+    const hero = document.getElementById("hero");
+    const footer = document.querySelector("footer");
+
+    if (!hero || !footer) return;
+
+    let heroOut = false;
+    let footerIn = false;
+
+    const update = () => {
+      setShowLogo(heroOut && !footerIn);
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        heroOut = !entry.isIntersecting;
+        update();
+      },
+      { threshold: 0.2 }
+    );
+
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => {
+        footerIn = entry.isIntersecting;
+        update();
+      },
+      { threshold: 0.2 }
+    );
+
+    heroObserver.observe(hero);
+    footerObserver.observe(footer);
+
+    return () => {
+      heroObserver.disconnect();
+      footerObserver.disconnect();
+    };
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white border-b border-grey-200"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#home" className="flex-shrink-0">
-  <div className="bg-white/80 backdrop-blur-md rounded-md px-3 py-2">
-    <img
-      src={logo}
-      alt="Shoonya Insurance Brokers"
-      className="h-10"
-    />
-  </div>
-</a>
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div
+        className={`transition-all duration-300 ${
+          showLogo
+            ? "bg-white border-b border-grey-200"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* LOGO */}
+            <div className="flex-shrink-0">
+              {showLogo && (
+                <img
+                  src={logo}
+                  alt="Shoonya Insurance Brokers"
+                  className="h-10 transition-opacity duration-300"
+                />
+              )}
+            </div>
 
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-10 ml-auto">
+              <a
+                href="#claims"
+                className="relative flex items-center text-sm font-medium text-grey-900 hover:text-primary"
+              >
+                <span className="absolute -left-4 text-primary text-xl">
+                  •
+                </span>
+                Claims
+              </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center ml-auto gap-10">
-            {/* Claims with BLUE DOT (INTACT) */}
-            <a
-              href="#claims"
-              className="relative flex items-center text-sm font-medium text-grey-900 hover:text-primary transition-colors"
-            >
-              <span className="absolute -left-4 text-primary text-xl leading-none">
-                •
-              </span>
-              Claims
-            </a>
+              <a
+                href="#insurance-solutions"
+                className="text-sm font-medium text-grey-700 hover:text-primary"
+              >
+                Buy Insurance
+              </a>
 
-            {/* Buy Insurance */}
-            <a
-              href="#insurance-solutions"
-              className={`text-sm font-medium ${
-                currentPage === "insurance-solutions"
-                  ? "text-primary"
-                  : "text-grey-700 hover:text-primary transition-colors"
-              }`}
-            >
-              Buy Insurance
-            </a>
+              <a
+                href="#hero"
+                className="text-sm font-medium text-grey-700 hover:text-primary"
+              >
+                Home
+              </a>
+            </nav>
 
-            {/* Home */}
-            <a
-              href="#home"
-              className={`text-sm font-medium ${
-                currentPage === "home"
-                  ? "text-primary"
-                  : "text-grey-700 hover:text-primary transition-colors"
-              }`}
-            >
-              Home
-            </a>
-          </nav>
-
-          {/* Mobile Menu */}
-          <MobileMenu currentPage={currentPage} />
+            <MobileMenu currentPage={currentPage} />
+          </div>
         </div>
       </div>
     </header>
