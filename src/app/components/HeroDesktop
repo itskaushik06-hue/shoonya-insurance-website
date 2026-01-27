@@ -1,0 +1,50 @@
+function HeroDesktop() {
+  return (
+    <section
+      id="hero"
+      className="
+        hidden
+        md:flex
+        min-h-screen
+        w-full
+        bg-white
+        flex-col
+        items-center
+        pt-28
+      "
+    >
+      {/* Image */}
+      <div className="relative w-full flex justify-center">
+        <img
+          src="/images/hero.png"
+          alt="Shoonya Insurance Brokers"
+          className="max-w-[640px] w-full h-auto object-contain"
+        />
+      </div>
+
+      {/* Overlapping Text */}
+      <div
+        className="
+          relative
+          z-10
+          -mt-32
+          px-6
+          text-center
+          max-w-2xl
+        "
+      >
+        <p className="text-sm tracking-wide text-grey-500">
+          Claim Assistance · Customised Insurance · A Safer and Greener Future
+        </p>
+
+        <h1 className="mt-4 text-[36px] font-semibold text-grey-900">
+          Let’s start with a conversation
+        </h1>
+
+        <p className="mt-3 text-base text-grey-600 leading-relaxed">
+          No pressure. No sales calls. Just humans who care.
+        </p>
+      </div>
+    </section>
+  );
+}

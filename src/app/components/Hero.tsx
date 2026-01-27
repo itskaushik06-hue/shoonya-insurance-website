@@ -13,7 +13,7 @@ export function Hero() {
         pt-16
         pb-20
         md:min-h-screen
-        md:pt-20
+        md:pt-28
       "
     >
       {/* IMAGE */}

@@ -26,89 +26,63 @@ export function HomePage() {
       <Hero />
 
       {/* Divider */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="border-t border-grey-200"></div>
-      </div>
+      <SectionDivider />
 
       {/* What We Do */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
-        <div className="text-center mb-16">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="text-center mb-14">
           <h2>What We Do</h2>
           <p className="mt-4 text-grey-600 max-w-2xl mx-auto">
             We simplify insurance with a consultative approach that puts your needs first.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
-            <Shield className="w-6 h-6 text-primary mb-4" />
-            <h3 className="mb-4">Insurance Audit</h3>
-            <p className="text-grey-600">
-              We review your coverage, identify gaps, and ensure protection against real risks.
-            </p>
-          </div>
+        <div className="grid md:grid-cols-3 gap-14 text-center">
+          <Feature
+            icon={<Shield />}
+            title="Insurance Audit"
+            text="We review your coverage, identify gaps, and ensure protection against real risks."
+          />
 
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
-            <FileCheck className="w-6 h-6 text-primary mb-4" />
-            <h3 className="mb-4">Tailor-Made Policies</h3>
-            <p className="text-grey-600">
-              Coverage designed around your life stage and business realities.
-            </p>
-          </div>
+          <Feature
+            icon={<FileCheck />}
+            title="Tailor-Made Policies"
+            text="Coverage designed around your life stage and business realities."
+          />
 
-          <div className="bg-white border border-grey-200 rounded-lg p-8">
-            <HeartHandshake className="w-6 h-6 text-primary mb-4" />
-            <h3 className="mb-4">Claim Support</h3>
-            <p className="text-grey-600">
-              Human guidance through claims with clarity and experience.
-            </p>
-          </div>
+          <Feature
+            icon={<HeartHandshake />}
+            title="Claim Support"
+            text="Human guidance through claims with clarity and experience."
+          />
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="border-t border-grey-200"></div>
-      </div>
+      <SectionDivider />
 
-      {/* Insurance Categories */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
-        <div className="text-center mb-16">
+      {/* Insurance Solutions */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="text-center mb-14">
           <h2>Insurance Solutions We Offer</h2>
           <p className="mt-4 text-grey-600 max-w-2xl mx-auto">
             Coverage across individual, business, industrial, and specialized needs.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="border border-grey-200 rounded-lg p-8">
-            <Users className="w-6 h-6 text-primary mb-4" />
-            <h4>Individual Insurance</h4>
-          </div>
-          <div className="border border-grey-200 rounded-lg p-8">
-            <Building2 className="w-6 h-6 text-primary mb-4" />
-            <h4>Business Insurance</h4>
-          </div>
-          <div className="border border-grey-200 rounded-lg p-8">
-            <Factory className="w-6 h-6 text-primary mb-4" />
-            <h4>Industrial Insurance</h4>
-          </div>
-          <div className="border border-grey-200 rounded-lg p-8">
-            <Landmark className="w-6 h-6 text-primary mb-4" />
-            <h4>Specialized Insurance</h4>
-          </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+          <Solution icon={<Users />} label="Individual Insurance" />
+          <Solution icon={<Building2 />} label="Business Insurance" />
+          <Solution icon={<Factory />} label="Industrial Insurance" />
+          <Solution icon={<Landmark />} label="Specialized Insurance" />
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="border-t border-grey-200"></div>
-      </div>
+      <SectionDivider />
 
       {/* Final CTA */}
       <section
         id="final-cta"
-        className="max-w-5xl mx-auto px-6 lg:px-8 py-24"
+        className="max-w-5xl mx-auto px-6 lg:px-8 py-20"
       >
         <div className="text-center space-y-6">
           <h2>Let Us Talk About Your Coverage</h2>
@@ -119,7 +93,57 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Footer (header will auto-hide here, explained below) */}
       <Footer />
+    </div>
+  );
+}
+
+/* ---------- Small helpers ---------- */
+
+function SectionDivider() {
+  return (
+    <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="border-t border-grey-200" />
+    </div>
+  );
+}
+
+function Feature({
+  icon,
+  title,
+  text,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-center text-primary">
+        {icon}
+      </div>
+      <h3>{title}</h3>
+      <p className="text-grey-600">{text}</p>
+    </div>
+  );
+}
+
+function Solution({
+  icon,
+  label,
+}: {
+  icon: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-center text-primary">
+        {icon}
+      </div>
+      <h4 className="cursor-pointer hover:text-primary transition-colors">
+        {label}
+      </h4>
     </div>
   );
 }
