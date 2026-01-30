@@ -4,27 +4,29 @@ import wildlife from "@/assets/keep-it-green.png";
 
 export function Footer() {
   return (
-    <footer className="w-full">
-      {/* Wildlife Image */}
+    <footer id="site-footer" className="w-full">
+      {/* ================= Wildlife Image ================= */}
       <div className="w-full overflow-hidden">
         <img
           src={wildlife}
           alt="Shoonya Sustainability"
-          className="
-            w-full
-            h-[180px]
-            md:h-auto
-            object-cover
-          "
+          className="w-full h-[180px] md:h-auto object-cover"
         />
       </div>
 
-      {/* Footer Content */}
+      {/* ================= Footer Content ================= */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-6 text-sm text-grey-900">
-            
-            {/* LEFT */}
+        <div className="max-w-7xl mx-auto px-6 py-10 space-y-8 text-sm text-grey-900">
+          
+          {/* Nav */}
+          <nav className="flex justify-center gap-8 font-medium text-grey-700">
+            <a href="#hero" className="hover:text-primary">Home</a>
+            <a href="#insurance-solutions" className="hover:text-primary">Solutions</a>
+            <a href="#claims" className="hover:text-primary">Claims</a>
+          </nav>
+
+          {/* Main */}
+          <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-3">
               <img src={logo} alt="Shoonya" className="h-10" />
 
@@ -43,25 +45,18 @@ export function Footer() {
               </p>
             </div>
 
-            {/* RIGHT */}
             <div className="space-y-2 md:text-right">
               <p>Shoonya Insurance Brokers Private Limited</p>
-              <p>
-                Regd Address: 7/9 Trikuta Nagar Jammu, J&K 180012, India
-              </p>
+              <p>7/9 Trikuta Nagar, Jammu, J&K 180012, India</p>
               <p>Direct Insurance Broker (Life & General)</p>
-              <p>
-                License No: 905 by IRDA (Expiry: 17th July, 2026)
-              </p>
+              <p>IRDA License No: 905 (Valid till July 17, 2026)</p>
               <p>CIN: U66000JK2022PTC014062</p>
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="mt-6 border-t border-grey-200" />
+          <div className="border-t border-grey-200" />
 
-          {/* Copyright */}
-          <p className="mt-4 text-xs text-center text-grey-600">
+          <p className="text-xs text-center text-grey-600">
             © 2026 Shoonya Insurance Brokers | We Care. All rights reserved.
           </p>
         </div>

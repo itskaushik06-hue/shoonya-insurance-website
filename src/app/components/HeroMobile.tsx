@@ -1,35 +1,69 @@
-function HeroMobile() {
+import React from "react";
+
+export function HeroMobile() {
   return (
     <section
-      id="hero"
+      id="hero-mobile"
       className="
         md:hidden
-        h-screen
         w-full
+        min-h-screen
         bg-white
         flex
         flex-col
         items-center
         justify-center
-        px-6
+        px-12
         text-center
       "
     >
+      {/* IMAGE */}
       <img
         src="/images/hero.png"
         alt="Shoonya Insurance Brokers"
-        className="w-[260px] h-auto mb-8"
+        className="
+          w-[2000px]   /* ↑ Bigger logo on mobile */
+          h-auto
+          object-1contain
+          mb-4
+        "
       />
 
-      <p className="text-xs tracking-wide text-grey-500 mb-3">
+      {/* Descriptor */}
+      <p
+        className="
+          text-xs
+          tracking-wide
+          text-grey-500
+          mb-6
+        "
+      >
         Claim Assistance · Customised Insurance · A Safer and Greener Future
       </p>
 
-      <h1 className="text-2xl font-semibold text-grey-900">
-        Let’s start with a conversation
-      </h1>
+      {/* Headline */}
+      <a href="#final-cta">
+        <h1
+          className="
+            max-w-3xl mx-auto text-center space-y-4
+            hover:text-primary
+            transition-colors
+            mb-3
+          "
+        >
+          Let’s start with a conversation
+        </h1>
+      </a>
 
-      <p className="mt-3 text-sm text-grey-600 leading-relaxed max-w-sm">
+      {/* Supporting copy */}
+      <p
+        className="
+          text-base
+          text-grey-600
+          leading-relaxed
+          max-w-sm
+        "
+      >
         No pressure. No sales calls. Just humans who care.
       </p>
     </section>

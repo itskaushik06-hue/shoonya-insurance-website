@@ -1,53 +1,64 @@
 import React, { useEffect, useState } from "react";
-import { MessageCircle, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 export function FloatingCTAs() {
-  const [heroVisible, setHeroVisible] = useState(false);
-  const [finalVisible, setFinalVisible] = useState(false);
-  const [footerVisible, setFooterVisible] = useState(false);
+  const [hideCTAs, setHideCTAs] = useState(true);
 
   useEffect(() => {
-    const hero = document.getElementById("hero");
+    const heroDesktop = document.getElementById("hero-desktop");
+    const heroMobile = document.getElementById("hero-mobile");
     const finalCta = document.getElementById("final-cta");
-    const footer = document.querySelector("footer");
+    const footer = document.getElementById("site-footer");
 
-    if (!hero || !finalCta || !footer) return;
+    const targets = [
+      heroDesktop,
+      heroMobile,
+      finalCta,
+      footer,
+    ].filter(Boolean) as Element[];
+
+    if (targets.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === hero) {
-            setHeroVisible(entry.isIntersecting);
-          }
-          if (entry.target === finalCta) {
-            setFinalVisible(entry.isIntersecting);
-          }
-          if (entry.target === footer) {
-            setFooterVisible(entry.isIntersecting);
-          }
-        });
+        // If ANY important section is visible → hide CTAs
+        const shouldHide = entries.some(
+          (entry) => entry.isIntersecting
+        );
+
+        setHideCTAs(shouldHide);
       },
-      { threshold: 0.3 }
+      {
+        threshold: 0.05, // EARLY trigger → no overlap ever
+      }
     );
 
-    observer.observe(hero);
-    observer.observe(finalCta);
-    observer.observe(footer);
+    targets.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
-  const showCTAs =
-    !heroVisible && !finalVisible && !footerVisible;
-
-  if (!showCTAs) return null;
+  if (hideCTAs) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3 animate-float-in">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       {/* Schedule Call */}
       <a
-        href="#"
-        className="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg transition hover:scale-105"
+        href="tel:+919419286666"
+        className="
+          flex
+          items-center
+          justify-center
+          w-14
+          h-14
+          rounded-full
+          bg-primary
+          text-white
+          shadow-lg
+          transition
+          hover:scale-105
+          active:scale-95
+        "
         aria-label="Schedule a Call"
       >
         <Calendar className="w-6 h-6" />
@@ -58,10 +69,28 @@ export function FloatingCTAs() {
         href="https://wa.me/919419286666"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg transition hover:scale-105"
+        className="
+          flex
+          items-center
+          justify-center
+          w-14
+          h-14
+          rounded-full
+          bg-white
+          border
+          border-grey-300
+          shadow-lg
+          transition
+          hover:scale-105
+          active:scale-95
+        "
         aria-label="WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        <img
+          src="/images/whatsapp.png"
+          alt="WhatsApp"
+          className="w-6 h-6"
+        />
       </a>
     </div>
   );

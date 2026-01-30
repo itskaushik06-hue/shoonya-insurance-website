@@ -35,15 +35,15 @@ export function MobileMenu({ currentPage = 'home' }: MobileMenuProps) {
               Home
             </a>
             <a
-              href="#insurance-solutions"
+              href="#solutions"
               onClick={() => setIsOpen(false)}
               className={`text-base py-2 ${
-                currentPage === 'insurance-solutions'
+                currentPage === 'solutions'
                   ? 'text-primary font-medium'
                   : 'text-grey-700'
               }`}
             >
-              Insurance Solutions
+              Solutions
             </a>
             <a
               href="#claims"
@@ -51,13 +51,6 @@ export function MobileMenu({ currentPage = 'home' }: MobileMenuProps) {
               className="text-base py-2 text-grey-700"
             >
               Claims
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="text-base py-2 text-grey-700"
-            >
-              Contact
             </a>
           </nav>
         </div>

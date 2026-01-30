@@ -3,43 +3,49 @@ import logo from "@/assets/logo.png";
 import { MobileMenu } from "./MobileMenu";
 
 interface HeaderProps {
-  currentPage?: string;
+  currentPage?: "home" | "solutions" | "claims";
 }
 
 export function Header({ currentPage = "home" }: HeaderProps) {
   const [showLogo, setShowLogo] = useState(false);
+  const [solid, setSolid] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("hero");
-    const footer = document.querySelector("footer");
+    const heroDesktop = document.getElementById("hero-desktop");
+    const heroMobile = document.getElementById("hero-mobile");
+    const footer = document.getElementById("site-footer");
 
-    if (!hero || !footer) return;
+    if (!heroDesktop && !heroMobile) return;
 
-    let heroOut = false;
-    let footerIn = false;
+    let heroVisible = true;
+    let footerVisible = false;
 
     const update = () => {
-      setShowLogo(heroOut && !footerIn);
+      // Logo shows ONLY when hero is gone and footer not visible
+      setShowLogo(!heroVisible && !footerVisible);
+      // Header becomes solid once hero is gone
+      setSolid(!heroVisible);
     };
 
     const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        heroOut = !entry.isIntersecting;
+      (entries) => {
+        heroVisible = entries.some((e) => e.isIntersecting);
         update();
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     const footerObserver = new IntersectionObserver(
       ([entry]) => {
-        footerIn = entry.isIntersecting;
+        footerVisible = entry.isIntersecting;
         update();
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    heroObserver.observe(hero);
-    footerObserver.observe(footer);
+    if (heroDesktop) heroObserver.observe(heroDesktop);
+    if (heroMobile) heroObserver.observe(heroMobile);
+    if (footer) footerObserver.observe(footer);
 
     return () => {
       heroObserver.disconnect();
@@ -47,33 +53,54 @@ export function Header({ currentPage = "home" }: HeaderProps) {
     };
   }, []);
 
+  const base =
+    "text-sm font-medium transition-colors duration-200";
+
+  const active = "text-primary";
+  const inactive = "text-grey-700 hover:text-primary";
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+    <header className="sticky top-0 z-50">
       <div
-        className={`transition-all duration-300 ${
-          showLogo
-            ? "bg-white border-b border-grey-200"
-            : "bg-transparent"
-        }`}
+        className={`
+          h-20
+          transition-all
+          duration-300
+          ${
+            solid
+              ? "bg-white border-b border-grey-200 shadow-sm"
+              : "bg-white/70 backdrop-blur"
+          }
+        `}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-full">
+          <div className="flex items-center justify-between h-full">
             {/* LOGO */}
-            <div className="flex-shrink-0">
-              {showLogo && (
-                <img
-                  src={logo}
-                  alt="Shoonya Insurance Brokers"
-                  className="h-10 transition-opacity duration-300"
-                />
-              )}
+            <div className="w-40 flex items-center">
+              <img
+                src={logo}
+                alt="Shoonya Insurance Brokers"
+                className={`
+                  h-10
+                  transition-all
+                  duration-300
+                  ${
+                    showLogo
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-1 pointer-events-none"
+                  }
+                `}
+              />
             </div>
 
-            {/* Desktop Navigation */}
+            {/* DESKTOP NAV — ORDER UNCHANGED */}
             <nav className="hidden md:flex items-center gap-10 ml-auto">
+              {/* Claims */}
               <a
                 href="#claims"
-                className="relative flex items-center text-sm font-medium text-grey-900 hover:text-primary"
+                className={`relative flex items-center ${base} ${
+                  currentPage === "claims" ? active : inactive
+                }`}
               >
                 <span className="absolute -left-4 text-primary text-xl">
                   •
@@ -81,16 +108,22 @@ export function Header({ currentPage = "home" }: HeaderProps) {
                 Claims
               </a>
 
+              {/* Solutions */}
               <a
-                href="#insurance-solutions"
-                className="text-sm font-medium text-grey-700 hover:text-primary"
+                href="#solutions"
+                className={`${base} ${
+                  currentPage === "solutions" ? active : inactive
+                }`}
               >
-                Buy Insurance
+                Solutions
               </a>
 
+              {/* Home */}
               <a
-                href="#hero"
-                className="text-sm font-medium text-grey-700 hover:text-primary"
+                href="#hero-desktop"
+                className={`${base} ${
+                  currentPage === "home" ? active : inactive
+                }`}
               >
                 Home
               </a>
