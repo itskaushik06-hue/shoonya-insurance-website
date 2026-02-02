@@ -2,6 +2,7 @@ import React from "react";
 import { ShieldCheck, Umbrella } from "lucide-react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { CTAButtons } from "./CTAButtons";
 
 /**
  * ===================== TUNING PARAMETERS =====================
@@ -44,6 +45,11 @@ export function SolutionsPage() {
           >
             Real humans · No pressure · Just clarity
           </p>
+
+          {/* ===== CTA (MATCHES CLAIMS HERO) ===== */}
+          <div className="pt-4 flex justify-center">
+            <CTAButtons variant="large" className="justify-center" />
+          </div>
 
           <p
             className={`
@@ -131,7 +137,6 @@ function SolutionCard({
         text-center
         space-y-4
         transition
-        
       "
     >
       <div

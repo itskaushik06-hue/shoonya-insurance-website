@@ -82,6 +82,10 @@ export function InsurancePage() {
             Guidance · Coverage · Security
           </p>
 
+          <div className="pt-6 flex justify-center">
+            <CTAButtons variant="large" className="justify-center" />
+          </div>
+
           <p
             className={`
               ${HERO_SUPPORT}
@@ -96,9 +100,7 @@ export function InsurancePage() {
             Just the right coverage at fair value, without over-complication.
           </p>
 
-          <div className="pt-6 flex justify-center">
-            <CTAButtons variant="large" className="justify-center" />
-          </div>
+          
 
           
         </div>

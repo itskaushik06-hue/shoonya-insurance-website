@@ -16,6 +16,7 @@ import { CTAButtons } from "./CTAButtons";
 import { FloatingCTAs } from "./FloatingCTAs";
 import { Hero } from "./Hero";
 
+
 export function HomePage() {
   return (
     <div className="min-h-screen bg-white page-transition">
@@ -24,50 +25,54 @@ export function HomePage() {
 
       {/* Hero */}
       <Hero />
+      
 
       <SectionDivider />
+      
 
       {/* ================= About Shoonya ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          
           <h2>About Shoonya</h2>
 
-          {/* highlighted line */}
           <p className="text-2xl font-semibold text-grey-700">
             Built on over 75 years of insurance experience.
           </p>
 
-          <p className="text-grey-600 leading-relaxed">
-            Shoonya was founded on a simple belief that insurance works best when it
-            is understood, not rushed.
-          </p>
+          <div className="space-y-5 text-grey-600 leading-relaxed text-justify">
+            <p>
+              Shoonya was founded on a simple belief that insurance works best when
+              it is understood, not rushed.
+            </p>
 
-          <p className="text-grey-600 leading-relaxed">
-            Across generations, our family has helped individuals, families, and
-            businesses navigate uncertainty by listening carefully, asking the
-            right questions, and advising responsibly.
-          </p>
+            <p>
+              Across generations, our family has helped individuals, families, and
+              businesses navigate uncertainty by listening carefully, asking the
+              right questions, and advising responsibly.
+            </p>
 
-          <p className="text-grey-600 leading-relaxed">
-            We don’t chase transactions or short-term decisions. We focus on
-            clarity, perspective, and long-term protection, so our clients feel
-            confident not just today, but years from now.
-          </p>
+            <p>
+              We don’t chase transactions or short-term decisions. We focus on
+              clarity, perspective, and long-term protection, so our clients feel
+              confident not just today, but years from now.
+            </p>
+          </div>
         </div>
       </section>
 
       <SectionDivider />
 
       {/* ================= What We Do ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center mb-16">
           <h2>What We Do</h2>
-          <p className="mt-3 text-grey-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-grey-600">
             We simplify insurance through a consultative approach.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto text-center">
+        <div className="grid md:grid-cols-3 gap-14 max-w-6xl mx-auto">
           <Feature
             icon={<Shield />}
             title="Insurance Audit"
@@ -89,15 +94,15 @@ export function HomePage() {
       <SectionDivider />
 
       {/* ================= Insurance Solutions ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center mb-16">
           <h2>Insurance Solutions We Offer</h2>
-          <p className="mt-3 text-grey-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-grey-600">
             Coverage across individual, business, industrial, and specialized needs.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-10 max-w-3xl mx-auto text-center">
+        <div className="grid sm:grid-cols-2 gap-14 max-w-4xl mx-auto">
           <Solution icon={<Users />} label="Individual Insurance" />
           <Solution icon={<Building2 />} label="Business Insurance" />
           <Solution icon={<Factory />} label="Industrial Insurance" />
@@ -107,79 +112,50 @@ export function HomePage() {
 
       <SectionDivider />
 
-      {/* ================= Our Purpose ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="max-w-3xl mx-auto text-center space-y-4">
-          <h2>Our Purpose</h2>
+      {/* ================= Our Values ================= */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="grid md:grid-cols-3 gap-14 max-w-6xl mx-auto">
+          <ValueCard
+            title="Our Purpose"
+            highlight="Guided by perspective. Driven by responsibility."
+            paragraphs={[
+              "Our purpose is to help people make confident, informed decisions about protection.",
+              "We believe clarity, context, and long-term thinking matter more than quick outcomes.",
+            ]}
+          />
 
-          {/* highlighted line */}
-          <p className="text-2xl font-semibold text-grey-700">
-            Guided by perspective. Driven by responsibility.
-          </p>
+          <ValueCard
+            title="Our Culture"
+            highlight="Built on trust, performance, and respect."
+            paragraphs={[
+              "We believe people do their best work when they feel trusted, supported, and valued.",
+              "Our culture encourages independent thinking, responsible action, and continuous growth.",
+            ]}
+          />
 
-          <p className="text-grey-600 leading-relaxed">
-            At Shoonya, we believe people do their best work when they feel
-            trusted, supported, and valued.
-          </p>
-
-          <p className="text-grey-600 leading-relaxed">
-            We foster a high-performing, inclusive culture where colleagues are
-            encouraged to think independently, act responsibly, and grow
-            continuously.
-          </p>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ================= Culture & Inclusion ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-            <h2>Our Culture</h2>
-            <p className="text-2xl font-semibold text-grey-700">
-              Built on trust, performance, and respect.
-            </p>
-            <p className="text-grey-600 leading-relaxed">
-              We believe people do their best work when they feel trusted,
-              supported, and valued.
-            </p>
-            <p className="text-grey-600 leading-relaxed">
-              We encourage independent thinking, responsible action, and
-              continuous growth.
-              </p>
-            </div>
-          </section>
-          <SectionDivider />
-
-          <section className="max-w-7xl mx-auto px-6 py-16">
-            <div className="max-w-4xl mx-auto text-center space-y-4">
-            <h2>Inclusion, Diversity & Belonging</h2>
-            <p className="text-2xl font-semibold text-grey-700">
-              Belonging is not a policy. It’s a promise.
-            </p>
-            <p className="text-grey-600 leading-relaxed">
-              We value the many backgrounds, experiences, and perspectives our
-              colleagues bring to Shoonya.
-            </p>
-            <p className="text-grey-600 leading-relaxed">
-              By fostering an inclusive environment where everyone feels they
-              belong, we create a stronger, more innovative organization.
-            </p>
+          <ValueCard
+            title="Our Inclusion & Belonging"
+            highlight="Belonging is not a policy. It’s a promise."
+            paragraphs={[
+              "We value the diverse backgrounds, experiences, and perspectives our colleagues bring.",
+              "By fostering true belonging, we build a stronger, more resilient organization.",
+            ]}
+          />
         </div>
       </section>
 
       <SectionDivider />
 
       {/* ================= Testimonials ================= */}
-      <section className="max-w-7xl mx-auto px-16 py-16">
-        <div className="text-center mb-12">
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center mb-16">
           <h2>What Our Clients Say</h2>
-          <p className="mt-3 text-grey-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-grey-600">
             Trusted by individuals and businesses who value clarity and integrity.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
           <Testimonial
             text="Shoonya helped us uncover gaps we didn’t even know existed. Their claim support was calm, clear, and human."
             author="Manufacturing Business Owner"
@@ -198,19 +174,17 @@ export function HomePage() {
       <SectionDivider />
 
       {/* ================= Final CTA ================= */}
-      <section id="final-cta" className="max-w-5xl mx-auto px-6 py-16">
-        <div className="text-center space-y-5">
+      <section id="final-cta" className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
           <h2>Let Us Talk About Your Coverage</h2>
-          <p className="text-lg text-grey-600 max-w-3xl mx-auto">
+          <p className="text-lg text-grey-600">
             Real humans. Real care. Experts who respect your time and guide you to the right protection.
           </p>
           <CTAButtons variant="large" className="justify-center" />
         </div>
       </section>
 
-      {/* Floating CTA stop zone */}
-<div id="footer-cta-stop" className="h-32 md:h-0" />
-
+      <div id="footer-cta-stop" className="h-32 md:h-0" />
 
       <Footer />
     </div>
@@ -229,21 +203,35 @@ function SectionDivider() {
 
 function Feature({ icon, title, text }: any) {
   return (
-    <div className="space-y-4">
-      <div className="flex justify-center text-primary">{icon}</div>
+    <div className="space-y-4 text-left">
+      <div className="text-primary">{icon}</div>
       <h3>{title}</h3>
-      <p className="text-grey-600">{text}</p>
+      <p className="text-grey-600 leading-relaxed text-justify">{text}</p>
     </div>
   );
 }
 
 function Solution({ icon, label }: any) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 text-center">
       <div className="flex justify-center text-primary">{icon}</div>
       <h4 className="hover:text-primary transition-colors cursor-pointer">
         {label}
       </h4>
+    </div>
+  );
+}
+
+function ValueCard({ title, highlight, paragraphs }: any) {
+  return (
+    <div className="border border-grey-200 rounded-xl p-8 bg-white space-y-5">
+      <h3>{title}</h3>
+      <p className="font-semibold text-grey-800">{highlight}</p>
+      {paragraphs.map((p: string, i: number) => (
+        <p key={i} className="text-grey-600 leading-relaxed text-justify">
+          {p}
+        </p>
+      ))}
     </div>
   );
 }

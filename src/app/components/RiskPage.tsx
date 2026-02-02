@@ -46,6 +46,11 @@ export function RiskPage() {
             Understand · Analyse · Protect
           </p>
 
+          {/* ===== CTA (MATCHES CLAIMS & SOLUTIONS HERO) ===== */}
+          <div className="pt-4 flex justify-center">
+            <CTAButtons variant="large" className="justify-center" />
+          </div>
+
           {/* Supporting Line */}
           <p
             className={`
@@ -95,7 +100,7 @@ export function RiskPage() {
                 claims advocacy under one roof.
               </p>
 
-              <ul className= {BODY_TEXT}>
+              <ul className={BODY_TEXT}>
                 <li>
                   Guided by judgement, supported by data, and grounded in
                   experience.
@@ -158,8 +163,7 @@ export function RiskPage() {
           </p>
 
           <CTAButtons variant="large" className="justify-center pt-2" />
-
-                  </div>
+        </div>
       </section>
 
       <Footer />

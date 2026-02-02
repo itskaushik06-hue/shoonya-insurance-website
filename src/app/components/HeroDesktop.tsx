@@ -12,7 +12,7 @@ export function HeroDesktop() {
         bg-white
         flex-col
         items-center
-        pt-28
+        pt-28              /* TOP OFFSET FROM HEADER – KEEP */
       "
     >
       {/* IMAGE */}
@@ -21,14 +21,14 @@ export function HeroDesktop() {
           w-full
           flex
           justify-center
-          -mt-30   /* ↑ Move image UP (adjust this) */
+          -mt-30             /* IMAGE VERTICAL POSITION – KEEP */
         "
       >
         <img
           src="/images/hero.png"
           alt="Shoonya Insurance Brokers"
           className="
-            w-[600px]
+            w-[600px]        /* LOGO SIZE – ADJUST ONLY IF NEEDED */
             h-auto
             object-contain
           "
@@ -38,19 +38,19 @@ export function HeroDesktop() {
       {/* TEXT */}
       <div
         className="
-          -mt-40 /* ↑ Pull text closer to image */
+          -mt-40             /* TEXT PULL-UP RELATIVE TO IMAGE – KEEP */
           text-center
-          max-w-2xl
-          px-6
+          max-5xl          /* MATCHES HOMEPAGE TEXT RAIL */
+          px-4            /* SIDE PADDING TO PREVENT OVERFLOW – KEEP */
         "
       >
         {/* Descriptor */}
         <p
           className="
-            text-sm
+            text-sm           /* MATCHES HOMEPAGE META TEXT */
             tracking-wide
-            text-grey-700
-            mb-40  /* ↓ Adjust spacing below descriptor */
+            text-grey-600     /* MATCHES HOMEPAGE BODY COLOR */
+            mb-10             /* ↓ REDUCED FROM mb-40 → FIXED EXCESS GAP */
           "
         >
           Claim Assistance · Customised Insurance · A Safer and Greener Future
@@ -59,14 +59,19 @@ export function HeroDesktop() {
         {/* Headline */}
         <a href="#final-cta">
           <h1
-            className="
-              max-w-3xl mx-auto text-center space-y-4
-              hover:text-primary
-              transition-colors
-              cursor-pointer
-              mb-3   /* ↓ Space to supporting copy */
-            "
-          >
+  className="
+    max-w-4xl
+    mx-auto
+    text-3xl          /* ↓ MAIN FONT SIZE CONTROL */
+    lg:text-4xl       /* ↑ SLIGHTLY BIGGER ON LARGE SCREENS */
+    leading-tight     /* TIGHTER, MORE PREMIUM */
+    hover:text-primary
+    transition-colors
+    cursor-pointer
+    mb-4
+  "
+>
+
             Let’s start with a conversation
           </h1>
         </a>
@@ -74,9 +79,11 @@ export function HeroDesktop() {
         {/* Supporting copy */}
         <p
           className="
-            text-base
-            text-grey-700
+            text-base        /* MATCHES HOMEPAGE BODY SIZE */
+            text-grey-600    /* MATCHES HOMEPAGE BODY COLOR */
             leading-relaxed
+            max-w-xl         /* SAME AS HOMEPAGE SUPPORTING COPY */
+            mx-auto
           "
         >
           No pressure. No sales calls. Just humans who care.

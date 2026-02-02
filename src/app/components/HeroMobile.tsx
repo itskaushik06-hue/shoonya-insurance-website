@@ -13,7 +13,7 @@ export function HeroMobile() {
         flex-col
         items-center
         justify-center
-        px-12
+        px-4                 /* SECTION SIDE PADDING */
         text-center
       "
     >
@@ -22,33 +22,54 @@ export function HeroMobile() {
         src="/images/hero.png"
         alt="Shoonya Insurance Brokers"
         className="
-          w-[2000px]   /* ↑ Bigger logo on mobile */
+          w-[98vw]          /* IMAGE DOMINANCE – viewport based */
+          max-w-[560px]      /* HARD CAP – prevents insanity */
           h-auto
-          object-1contain
-          mb-4
+          object-contain
+          mb-14              /* CREATES SPACE FOR OVERLAP */
         "
       />
 
-      {/* Descriptor */}
-      <p
+      {/* Descriptor (OVERLAPS IMAGE) */}
+      <div
         className="
-          text-xs
-          tracking-wide
-          text-grey-500
-          mb-6
+          -mt-40            /* 🔥 OVERLAP CONTROL – MOVE UP/DOWN */
+          mb-60               /* SPACE BEFORE HEADLINE */
         "
       >
-        Claim Assistance · Customised Insurance · A Safer and Greener Future
-      </p>
+        <p
+          className="
+            text-[14px]
+            tracking-wide
+            text-grey-500
+            leading-snug
+          "
+        >
+          Claim Assistance · Customised Insurance
+        </p>
+        <p
+          className="
+            text-[14px]
+            tracking-wide
+            text-grey-500
+            leading-snug
+          "
+        >
+          A Safer and Greener Future
+        </p>
+      </div>
 
       {/* Headline */}
       <a href="#final-cta">
         <h1
           className="
-            max-w-3xl mx-auto text-center space-y-4
+            max-w-xs
+            mx-auto
+            text-[32px]
+            leading-snug
             hover:text-primary
             transition-colors
-            mb-3
+            mb-4
           "
         >
           Let’s start with a conversation
@@ -58,13 +79,15 @@ export function HeroMobile() {
       {/* Supporting copy */}
       <p
         className="
-          text-base
+          text-[16px]
           text-grey-600
           leading-relaxed
-          max-w-sm
+          max-w-xs
         "
       >
-        No pressure. No sales calls. Just humans who care.
+        No pressure. No sales calls.
+        <br />
+        Just humans who care.
       </p>
     </section>
   );

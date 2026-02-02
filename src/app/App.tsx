@@ -33,6 +33,8 @@ import { EngineeringInsurancePage } from "./components/EngineeringInsurancePage"
 import { MoneyInsurancePage } from "./components/MoneyInsurancePage";
 import { MarineCargoInsurancePage } from "./components/MarineCargoInsurancePage";
 
+
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
@@ -45,6 +47,8 @@ export default function App() {
 
     handleNavigation();
     window.addEventListener("hashchange", handleNavigation);
+
+    <div className="min-h-screen bg-white overflow-x-hidden"></div>
 
     return () => window.removeEventListener("hashchange", handleNavigation);
   }, []);
