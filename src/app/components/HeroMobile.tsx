@@ -6,7 +6,7 @@ const LOGO_MAX_W = "max-w-[560px]";
 const LOGO_MAX_H = "max-h-[38vh]";
 
 const DESCRIPTOR_OFFSET = "-mt-10";   // overlap control
-const TOP_PADDING = "pt-60";
+const TOP_PADDING = "pt-40";
 
 const BOTTOM_PADDING = "pb-50";
 const TEXT_BLOCK_GAP = "space-y-4";
