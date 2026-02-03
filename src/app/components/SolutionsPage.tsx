@@ -16,6 +16,10 @@ const HERO_SUPPORT = "text-base";
 const CARD_GAP = "gap-8";
 const CARD_MAX_W = "max-w-5xl";
 
+/* === HERO BRAND MARK PARAMS === */
+const HERO_LOGO_GAP = "gap-4";     // dots ↔ title spacing
+const HERO_DOT_SIZE = "w-3 h-3";   // dot size
+
 export function SolutionsPage() {
   return (
     <div className="min-h-screen bg-white page-transition">
@@ -33,8 +37,39 @@ export function SolutionsPage() {
         `}
       >
         <div className="text-center max-w-3xl space-y-5">
-          <h1 className={HERO_TITLE}>Solutions</h1>
 
+          {/* Title Row with Shoonya Dots */}
+          <div
+            className={`
+              flex
+              items-center
+              justify-center
+              ${HERO_LOGO_GAP}
+            `}
+          >
+            {/* Shoonya Dots */}
+            <div className="flex flex-col gap-1">
+              <span
+                className={`
+                  ${HERO_DOT_SIZE}
+                  rounded-full
+                  bg-primary
+                `}
+              />
+              <span
+                className={`
+                  ${HERO_DOT_SIZE}
+                  rounded-full
+                  bg-green-500
+                `}
+              />
+            </div>
+
+            {/* Page Title */}
+            <h1 className={HERO_TITLE}>Solutions</h1>
+          </div>
+
+          {/* Descriptor */}
           <p
             className={`
               ${HERO_SUB}
@@ -51,6 +86,7 @@ export function SolutionsPage() {
             <CTAButtons variant="large" className="justify-center" />
           </div>
 
+          {/* Supporting Line */}
           <p
             className={`
               ${HERO_SUPPORT}

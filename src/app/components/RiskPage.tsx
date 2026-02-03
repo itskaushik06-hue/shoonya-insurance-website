@@ -14,6 +14,10 @@ const HERO_SUB = "text-1xl";
 const HERO_SUPPORT = "text-base";
 const BODY_TEXT = "text-grey-600 text-base leading-relaxed";
 
+/* === BRAND DOT PARAMS === */
+const HERO_LOGO_GAP = "gap-4";
+const HERO_DOT_SIZE = "w-3 h-3";
+
 export function RiskPage() {
   return (
     <div className="min-h-screen bg-white page-transition">
@@ -31,10 +35,38 @@ export function RiskPage() {
         `}
       >
         <div className="text-center max-w-3xl space-y-5">
-          {/* Page Title */}
-          <h1 className={HERO_TITLE}>Risk</h1>
 
-          {/* Descriptor — SAME ROLE AS CLAIMS */}
+          {/* Title Row with Brand Dots */}
+          <div
+            className={`
+              flex
+              items-center
+              justify-center
+              ${HERO_LOGO_GAP}
+            `}
+          >
+            {/* Shoonya Dots */}
+            <div className="flex flex-col gap-1">
+              <span
+                className={`
+                  ${HERO_DOT_SIZE}
+                  rounded-full
+                  bg-primary
+                `}
+              />
+              <span
+                className={`
+                  ${HERO_DOT_SIZE}
+                  rounded-full
+                  bg-green-500
+                `}
+              />
+            </div>
+
+            <h1 className={HERO_TITLE}>Risk</h1>
+          </div>
+
+          {/* Descriptor */}
           <p
             className={`
               ${HERO_SUB}
@@ -46,7 +78,7 @@ export function RiskPage() {
             Understand · Analyse · Protect
           </p>
 
-          {/* ===== CTA (MATCHES CLAIMS & SOLUTIONS HERO) ===== */}
+          {/* CTA */}
           <div className="pt-4 flex justify-center">
             <CTAButtons variant="large" className="justify-center" />
           </div>
@@ -86,9 +118,10 @@ export function RiskPage() {
       {/* ================= RISK PILLARS ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* LEFT */}
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            {/* EXPERT VIEW */}
+            <div className="bg-grey-50 border border-grey-200 rounded-xl p-8 space-y-6">
               <h3>Expert View</h3>
 
               <p className={BODY_TEXT}>
@@ -100,24 +133,29 @@ export function RiskPage() {
                 claims advocacy under one roof.
               </p>
 
-              <ul className={BODY_TEXT}>
-                <li>
-                  Guided by judgement, supported by data, and grounded in
-                  experience.
-                </li>
+              <p className="font-medium text-grey-700">
+                Our work is:
+              </p>
+
+              <ul className="list-disc pl-5 space-y-2 text-grey-600">
+                <li>Guided by judgement</li>
+                <li>Supported by data</li>
+                <li>Grounded in experience</li>
               </ul>
 
-              <p className={BODY_TEXT}>We focus on:</p>
+              <p className="font-medium text-grey-700 pt-2">
+                We focus on:
+              </p>
 
               <ul className="list-disc pl-5 space-y-2 text-grey-600">
                 <li>Reducing uncertainty</li>
                 <li>Controlling exposure</li>
-                <li>Making outcomes more predictable</li>
+                <li>Making outcomes predictable</li>
               </ul>
             </div>
 
-            {/* RIGHT */}
-            <div className="space-y-6">
+            {/* LOCAL INSIGHT */}
+            <div className="bg-grey-50 border border-grey-200 rounded-xl p-8 space-y-6">
               <h3>Local Insight</h3>
 
               <p className={BODY_TEXT}>
@@ -129,8 +167,12 @@ export function RiskPage() {
                 they operate and where their risks exist.
               </p>
 
+              <p className="font-medium text-grey-700">
+                Our understanding spans:
+              </p>
+
               <ul className="list-disc pl-5 space-y-2 text-grey-600">
-                <li>Understanding coverage details</li>
+                <li>Coverage interpretation</li>
                 <li>Regulatory changes</li>
                 <li>Emerging risks</li>
               </ul>
@@ -141,9 +183,10 @@ export function RiskPage() {
               </p>
 
               <p className="text-sm text-grey-500 italic">
-                (Always collaboratively. Always transparently.)
+                Always collaboratively. Always transparently.
               </p>
             </div>
+
           </div>
         </div>
       </section>

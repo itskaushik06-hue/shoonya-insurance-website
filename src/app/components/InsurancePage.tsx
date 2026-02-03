@@ -14,6 +14,16 @@ const HERO_TITLE = "text-5xl";
 const HERO_SUB = "text-1xl";
 const HERO_SUPPORT = "text-base";
 
+/* === BRAND DOT PARAMS === */
+const HERO_LOGO_GAP = "gap-4";
+const HERO_DOT_SIZE = "w-3 h-3";
+
+/* === GRID TUNING === */
+const GRID_MAX_W = "max-w-6xl";
+const GRID_GAP_X = "gap-x-8";
+const GRID_GAP_Y = "gap-y-10";
+const CARD_MAX_W = "max-w-sm";
+
 /* ================= POLICY ITEM ================= */
 
 function PolicyItem({
@@ -33,6 +43,7 @@ function PolicyItem({
         block
         space-y-2
         transition
+        w-full
       "
     >
       <div className="flex items-center justify-between gap-3">
@@ -43,7 +54,7 @@ function PolicyItem({
         <ArrowRight className="w-4 h-4 text-grey-400 group-hover:text-primary group-hover:translate-x-1 transition-all" />
       </div>
 
-      <p className="text-sm text-grey-600 leading-relaxed max-w-md">
+      <p className="text-sm text-grey-600 leading-relaxed">
         {description}
       </p>
     </a>
@@ -69,7 +80,36 @@ export function InsurancePage() {
         `}
       >
         <div className="text-center max-w-3xl space-y-5">
-          <h1 className={HERO_TITLE}>Insurance</h1>
+
+          {/* Title with Brand Dots */}
+          <div
+            className={`
+              flex
+              items-center
+              justify-center
+              ${HERO_LOGO_GAP}
+            `}
+          >
+            {/* Shoonya Dots */}
+            <div className="flex flex-col gap-1">
+              <span
+                className={`
+                  ${HERO_DOT_SIZE}
+                  rounded-full
+                  bg-primary
+                `}
+              />
+              <span
+                className={`
+                  ${HERO_DOT_SIZE}
+                  rounded-full
+                  bg-green-500
+                `}
+              />
+            </div>
+
+            <h1 className={HERO_TITLE}>Insurance</h1>
+          </div>
 
           <p
             className={`
@@ -99,10 +139,6 @@ export function InsurancePage() {
             <br />
             Just the right coverage at fair value, without over-complication.
           </p>
-
-          
-
-          
         </div>
       </section>
 
@@ -214,8 +250,8 @@ function Grid({ children }: { children: React.ReactNode }) {
         grid-cols-1
         md:grid-cols-2
         lg:grid-cols-3
-        gap-x-12
-        gap-y-10
+        gap-x-15
+        gap-y-20
         justify-items-center
       "
     >

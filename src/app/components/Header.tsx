@@ -11,45 +11,45 @@ export function Header({ currentPage = "home" }: HeaderProps) {
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
-    const heroDesktop = document.getElementById("hero-desktop");
-    const heroMobile = document.getElementById("hero-mobile");
+    // 🔑 HERO = first section on the page (works everywhere)
+    const hero = document.querySelector("section");
     const footer = document.getElementById("site-footer");
 
-    if (!heroDesktop && !heroMobile) return;
+    if (!hero) return;
 
     let heroVisible = true;
     let footerVisible = false;
 
     const update = () => {
-      // Logo shows ONLY when hero is gone and footer not visible
+      // Logo only shows when hero is gone AND footer not visible
       setShowLogo(!heroVisible && !footerVisible);
-      // Header becomes solid once hero is gone
       setSolid(!heroVisible);
     };
 
     const heroObserver = new IntersectionObserver(
-      (entries) => {
-        heroVisible = entries.some((e) => e.isIntersecting);
+      ([entry]) => {
+        heroVisible = entry.isIntersecting;
         update();
       },
       { threshold: 0.15 }
     );
 
-    const footerObserver = new IntersectionObserver(
-      ([entry]) => {
-        footerVisible = entry.isIntersecting;
-        update();
-      },
-      { threshold: 0.1 }
-    );
+    const footerObserver = footer
+      ? new IntersectionObserver(
+          ([entry]) => {
+            footerVisible = entry.isIntersecting;
+            update();
+          },
+          { threshold: 0.1 }
+        )
+      : null;
 
-    if (heroDesktop) heroObserver.observe(heroDesktop);
-    if (heroMobile) heroObserver.observe(heroMobile);
-    if (footer) footerObserver.observe(footer);
+    heroObserver.observe(hero);
+    if (footer && footerObserver) footerObserver.observe(footer);
 
     return () => {
       heroObserver.disconnect();
-      footerObserver.disconnect();
+      footerObserver?.disconnect();
     };
   }, []);
 
@@ -93,9 +93,8 @@ export function Header({ currentPage = "home" }: HeaderProps) {
               />
             </div>
 
-            {/* DESKTOP NAV — ORDER UNCHANGED */}
+            {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-10 ml-auto">
-              {/* Claims */}
               <a
                 href="#claims"
                 className={`relative flex items-center ${base} ${
@@ -108,7 +107,6 @@ export function Header({ currentPage = "home" }: HeaderProps) {
                 Claims
               </a>
 
-              {/* Solutions */}
               <a
                 href="#solutions"
                 className={`${base} ${
@@ -118,7 +116,6 @@ export function Header({ currentPage = "home" }: HeaderProps) {
                 Solutions
               </a>
 
-              {/* Home */}
               <a
                 href="#hero-desktop"
                 className={`${base} ${
