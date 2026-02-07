@@ -4,119 +4,125 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
 
-/**
- * ===================== TUNING PARAMETERS =====================
- * Keep these aligned with ClaimsPage for consistency
- */
-const SECTION_Y = "py-20";
-const HERO_MIN_H = "min-h-[85vh]";
-const HERO_TITLE = "text-5xl";
-const HERO_SUB = "text-1xl";
-const HERO_SUPPORT = "text-base";
-const CARD_GAP = "gap-8";
-const CARD_MAX_W = "max-w-5xl";
+/* ================= TUNING ================= */
 
-/* === HERO BRAND MARK PARAMS === */
-const HERO_LOGO_GAP = "gap-4";     // dots ↔ title spacing
-const HERO_DOT_SIZE = "w-3 h-3";   // dot size
+const SECTION_Y = "py-20";
+const HERO_MIN_H = "min-h-[80vh]";
+
+/* Logo */
+const LOGO_W_DESKTOP = "w-[340px]";
+const LOGO_W_MOBILE = "w-full";
+const LOGO_MAX_W = "max-w-[520px]";
+
+/* 🔑 Desktop-only left logo vertical offset */
+const LOGO_SHIFT_DESKTOP = "md:-mt-16"; // ← THIS moves only the left block up
+
+/* Text */
+const HERO_TITLE = "text-5xl";
+const HERO_SUB = "text-sm";
+const HERO_SUPPORT = "text-base";
 
 export function SolutionsPage() {
   return (
     <div className="min-h-screen bg-white page-transition">
       <Header currentPage="solutions" />
 
-      {/* ================= SOLUTIONS HERO ================= */}
+      {/* ================= HERO ================= */}
       <section
         className={`
           ${HERO_MIN_H}
           flex
           items-center
           justify-center
-          px-6
+          px-5
           ${SECTION_Y}
         `}
       >
-        <div className="text-center max-w-3xl space-y-5">
+        <div className="relative w-full max-w-7xl mx-auto">
+          {/* Divider (desktop only, visual only) */}
+          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+            <div className="h-full w-px bg-grey-300" />
+          </div>
 
-          {/* Title Row with Shoonya Dots */}
-          <div
-            className={`
-              flex
-              items-center
-              justify-center
-              ${HERO_LOGO_GAP}
-            `}
-          >
-            {/* Shoonya Dots */}
-            <div className="flex flex-col gap-1">
-              <span
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* ===== LEFT (LOGO) ===== */}
+            <div
+              className={`
+                flex
+                flex-col
+                items-center
+                text-center
+                ${LOGO_SHIFT_DESKTOP}
+              `}
+            >
+              <img
+                src="/images/sectionhero.png"
+                alt="Shoonya Insurance Brokers"
                 className={`
-                  ${HERO_DOT_SIZE}
-                  rounded-full
-                  bg-primary
+                  ${LOGO_W_MOBILE}
+                  md:${LOGO_W_DESKTOP}
+                  ${LOGO_MAX_W}
+                  h-auto
+                  object-contain
                 `}
               />
-              <span
-                className={`
-                  ${HERO_DOT_SIZE}
-                  rounded-full
-                  bg-green-500
-                `}
-              />
+
+              <div className="-mt-20 space-y-1">
+                <p className="text-sm text-grey-600 tracking-wide">
+                  Claim Assistance · Customised Insurance
+                </p>
+                <p className="text-sm text-grey-600 tracking-wide">
+                  A Safer and Greener Future
+                </p>
+              </div>
             </div>
 
-            {/* Page Title */}
-            <h1 className={HERO_TITLE}>Solutions</h1>
+            {/* ===== RIGHT ===== */}
+            <div className="flex flex-col items-center text-center space-y-5">
+              <h1 className={HERO_TITLE}>Solutions</h1>
+
+              <p
+                className={`
+                  ${HERO_SUB}
+                  tracking-wide
+                  text-grey-600
+                  uppercase
+                `}
+              >
+                Real humans · No pressure · Just clarity
+              </p>
+
+              <div className="w-fit mx-auto">
+                <CTAButtons
+                  variant="large"
+                  className="justify-center"
+                />
+              </div>
+
+              <p
+                className={`
+                  ${HERO_SUPPORT}
+                  text-grey-600
+                  leading-relaxed
+                  max-w-xl
+                `}
+              >
+                Thoughtful guidance, built around your{" "}
+                <span className="font-medium text-grey-800">
+                  real risks
+                </span>{" "}
+                not generic policies.
+              </p>
+            </div>
           </div>
-
-          {/* Descriptor */}
-          <p
-            className={`
-              ${HERO_SUB}
-              tracking-wide
-              text-grey-600
-              uppercase
-            `}
-          >
-            Real humans · No pressure · Just clarity
-          </p>
-
-          {/* ===== CTA (MATCHES CLAIMS HERO) ===== */}
-          <div className="pt-4 flex justify-center">
-            <CTAButtons variant="large" className="justify-center" />
-          </div>
-
-          {/* Supporting Line */}
-          <p
-            className={`
-              ${HERO_SUPPORT}
-              text-grey-600
-              leading-relaxed
-            `}
-          >
-            Thoughtful guidance, built around your{" "}
-            <span className="font-medium text-grey-800">
-              real risks
-            </span>{" "}
-            not generic policies.
-          </p>
         </div>
       </section>
 
-      <Divider />
+      
 
-      {/* ================= SOLUTION CHOICE ================= */}
+      {/* ================= SOLUTIONS ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
-        <div
-          className={`
-            ${CARD_MAX_W}
-            mx-auto
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            ${CARD_GAP}
-          `}
-        >
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <SolutionCard
             icon={<ShieldCheck />}
             title="Risk"
@@ -148,8 +154,6 @@ function Divider() {
   );
 }
 
-/* ================= CARD ================= */
-
 function SolutionCard({
   icon,
   title,
@@ -173,21 +177,10 @@ function SolutionCard({
         text-center
         space-y-4
         transition
+        hover:shadow-sm
       "
     >
-      <div
-        className="
-          w-14
-          h-14
-          mx-auto
-          flex
-          items-center
-          justify-center
-          rounded-full
-          bg-grey-100
-          text-primary
-        "
-      >
+      <div className="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-grey-100 text-primary">
         {icon}
       </div>
 

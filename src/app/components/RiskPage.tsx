@@ -3,107 +3,117 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
 
-/**
- * ===================== TUNING PARAMETERS =====================
- * Matched EXACTLY with ClaimsPage
- */
+/* ================= TUNING ================= */
+
+/* Shared spacing */
 const SECTION_Y = "py-20";
-const HERO_MIN_H = "min-h-[85vh]";
+
+/* HERO — EXACTLY SAME CONTRACT AS CLAIMS */
+const HERO_MIN_H = "min-h-auto md:min-h-[80vh]";
+
+/* Logo */
+const LOGO_W_DESKTOP = "w-[340px]";
+const LOGO_W_MOBILE = "w-full";
+const LOGO_MAX_W = "max-w-[520px]";
+const LOGO_TEXT_OVERLAP = "-mt-20";
+const LOGO_SHIFT_DESKTOP = "md:-mt-16";
+
+/* Text */
 const HERO_TITLE = "text-5xl";
-const HERO_SUB = "text-1xl";
+const HERO_SUB = "text-sm";
 const HERO_SUPPORT = "text-base";
 const BODY_TEXT = "text-grey-600 text-base leading-relaxed";
-
-/* === BRAND DOT PARAMS === */
-const HERO_LOGO_GAP = "gap-4";
-const HERO_DOT_SIZE = "w-3 h-3";
 
 export function RiskPage() {
   return (
     <div className="min-h-screen bg-white page-transition">
       <Header currentPage="solutions" />
 
-      {/* ================= RISK HERO ================= */}
+      {/* ================= HERO (MATCHES SOLUTIONS + CLAIMS) ================= */}
       <section
         className={`
           ${HERO_MIN_H}
           flex
-          items-center
+          items-start md:items-center
           justify-center
           px-6
-          ${SECTION_Y}
+          pt-24 pb-16
+          md:py-20
         `}
       >
-        <div className="text-center max-w-3xl space-y-5">
+        <div className="relative w-full max-w-7xl mx-auto">
+          {/* Divider (desktop only) */}
+          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+            <div className="h-full w-px bg-grey-300" />
+          </div>
 
-          {/* Title Row with Brand Dots */}
-          <div
-            className={`
-              flex
-              items-center
-              justify-center
-              ${HERO_LOGO_GAP}
-            `}
-          >
-            {/* Shoonya Dots */}
-            <div className="flex flex-col gap-1">
-              <span
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* ===== LEFT (LOGO) ===== */}
+            <div
+              className={`
+                flex
+                flex-col
+                items-center
+                text-center
+                ${LOGO_SHIFT_DESKTOP}
+              `}
+            >
+              <img
+                src="/images/sectionhero.png"
+                alt="Shoonya Insurance Brokers"
                 className={`
-                  ${HERO_DOT_SIZE}
-                  rounded-full
-                  bg-primary
+                  ${LOGO_W_MOBILE}
+                  md:${LOGO_W_DESKTOP}
+                  ${LOGO_MAX_W}
+                  h-auto
+                  object-contain
                 `}
               />
-              <span
-                className={`
-                  ${HERO_DOT_SIZE}
-                  rounded-full
-                  bg-green-500
-                `}
-              />
+
+              <div className={`${LOGO_TEXT_OVERLAP} space-y-1`}>
+                <p className="text-sm text-grey-600 tracking-wide">
+                  Claim Assistance · Customised Insurance
+                </p>
+                <p className="text-sm text-grey-600 tracking-wide">
+                  A Safer and Greener Future
+                </p>
+              </div>
             </div>
 
-            <h1 className={HERO_TITLE}>Risk</h1>
+            {/* ===== RIGHT (CONTENT) ===== */}
+            <div className="flex flex-col items-center text-center space-y-5">
+              <h1 className={HERO_TITLE}>Risk</h1>
+
+              <p
+                className={`
+                  ${HERO_SUB}
+                  tracking-wide
+                  text-grey-600
+                  uppercase
+                `}
+              >
+                Understand · Analyse · Protect
+              </p>
+
+              <CTAButtons variant="large" className="justify-center" />
+
+              <p
+                className={`
+                  ${HERO_SUPPORT}
+                  text-grey-600
+                  leading-relaxed
+                  max-w-xl
+                `}
+              >
+                We see risk clearly and tailor insurance to fit your real needs.
+              </p>
+            </div>
           </div>
-
-          {/* Descriptor */}
-          <p
-            className={`
-              ${HERO_SUB}
-              tracking-wide
-              text-grey-600
-              uppercase
-            `}
-          >
-            Understand · Analyse · Protect
-          </p>
-
-          {/* CTA */}
-          <div className="pt-4 flex justify-center">
-            <CTAButtons variant="large" className="justify-center" />
-          </div>
-
-          {/* Supporting Line */}
-          <p
-            className={`
-              ${HERO_SUPPORT}
-              text-grey-600
-              max-w-3xl
-              mx-auto
-              pt-2
-            `}
-          >
-            We see risk clearly and tailor insurance to fit your real needs.
-          </p>
         </div>
       </section>
 
-      <Divider />
-
       {/* ================= OUR APPROACH ================= */}
-      <section
-        className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center`}
-      >
+      <section className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center`}>
         <div className="space-y-4">
           <h2>Our Approach</h2>
 
@@ -113,13 +123,10 @@ export function RiskPage() {
         </div>
       </section>
 
-      <Divider />
-
       {/* ================= RISK PILLARS ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
             {/* EXPERT VIEW */}
             <div className="bg-grey-50 border border-grey-200 rounded-xl p-8 space-y-6">
               <h3>Expert View</h3>
@@ -133,9 +140,7 @@ export function RiskPage() {
                 claims advocacy under one roof.
               </p>
 
-              <p className="font-medium text-grey-700">
-                Our work is:
-              </p>
+              <p className="font-medium text-grey-700">Our work is:</p>
 
               <ul className="list-disc pl-5 space-y-2 text-grey-600">
                 <li>Guided by judgement</li>
@@ -143,9 +148,7 @@ export function RiskPage() {
                 <li>Grounded in experience</li>
               </ul>
 
-              <p className="font-medium text-grey-700 pt-2">
-                We focus on:
-              </p>
+              <p className="font-medium text-grey-700 pt-2">We focus on:</p>
 
               <ul className="list-disc pl-5 space-y-2 text-grey-600">
                 <li>Reducing uncertainty</li>
@@ -158,9 +161,7 @@ export function RiskPage() {
             <div className="bg-grey-50 border border-grey-200 rounded-xl p-8 space-y-6">
               <h3>Local Insight</h3>
 
-              <p className={BODY_TEXT}>
-                Insight where it matters most.
-              </p>
+              <p className={BODY_TEXT}>Insight where it matters most.</p>
 
               <p className={BODY_TEXT}>
                 We support individual and commercial clients in the markets where
@@ -186,17 +187,12 @@ export function RiskPage() {
                 Always collaboratively. Always transparently.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-      <Divider />
-
       {/* ================= FINAL CTA ================= */}
-      <section
-        className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center`}
-      >
+      <section className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center`}>
         <div className="space-y-5">
           <h2>We’re here when you’re ready.</h2>
 
@@ -210,16 +206,6 @@ export function RiskPage() {
       </section>
 
       <Footer />
-    </div>
-  );
-}
-
-/* ================= SHARED ================= */
-
-function Divider() {
-  return (
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="border-t border-grey-200" />
     </div>
   );
 }
