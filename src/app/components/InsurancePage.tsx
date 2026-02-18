@@ -156,7 +156,6 @@ export function InsurancePage() {
       >
         <Grid>
           <PolicyItem name="Health Insurance" description="Comprehensive medical coverage for you and your family, including hospitalization, surgeries, and preventive care." href="#health-insurance" />
-          <PolicyItem name="Group Health Insurance" description="Affordable health coverage for your employees, ensuring their well-being and your peace of mind." href="#group-health-insurance" />
           <PolicyItem name="Personal Accident" description="Financial protection against accidental injuries, disability, and death for you and your family." href="#personal-accident" />
           <PolicyItem name="Travel Insurance" description="Coverage for medical emergencies, trip cancellations, lost baggage, and more while traveling." href="#travel-insurance" />
           <PolicyItem name="Motor Insurance" description="Comprehensive or third-party coverage for your car, bike, or commercial vehicle." href="#motor-insurance" />
@@ -173,6 +172,7 @@ export function InsurancePage() {
       >
         <Grid>
           <PolicyItem name="Office Package Policy" description="All-in-one coverage for your office premises, equipment, and business operations." href="#office-package" />
+          <PolicyItem name="Group Health Insurance" description="Affordable health coverage for your employees, ensuring their well-being and your peace of mind." href="#group-health-insurance" />
           <PolicyItem name="Shopkeeper Insurance" description="Comprehensive protection for retail businesses against fire, theft, and liability." href="#shopkeeper-insurance" />
           <PolicyItem name="Property Insurance" description="Coverage for commercial properties against fire, natural disasters, and structural damage." href="#property-insurance" />
           <PolicyItem name="Fire Insurance" description="Protect your business assets and inventory from fire-related losses." href="#fire-insurance" />

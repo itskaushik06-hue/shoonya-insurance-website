@@ -27,7 +27,6 @@ export function HomePage() {
       <Hero />
       
 
-      <SectionDivider />
       
 
       {/* ================= About Shoonya ================= */}
@@ -61,7 +60,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <SectionDivider />
 
       {/* ================= What We Do ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
@@ -91,7 +89,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <SectionDivider />
 
       {/* ================= Insurance Solutions ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
@@ -110,7 +107,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <SectionDivider />
 
       {/* ================= Our Values ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
@@ -144,7 +140,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <SectionDivider />
 
       {/* ================= Testimonials ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
@@ -171,7 +166,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <SectionDivider />
 
       {/* ================= Final CTA ================= */}
       <section id="final-cta" className="max-w-7xl mx-auto px-6 py-24">

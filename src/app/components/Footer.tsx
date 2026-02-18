@@ -46,24 +46,28 @@ export function Footer() {
                 text-grey-600
               "
             >
-              <a href="/csr" className="hover:text-primary transition-colors">
+              <a href="#csr" className="hover:text-primary transition-colors">
                 CSR
               </a>
 
-              <a href="/articles" className="hover:text-primary transition-colors">
+              <a href="#articles" className="hover:text-primary transition-colors">
                 Articles
               </a>
 
-              <a href="/privacy-policy" className="hover:text-primary transition-colors">
+              <a href="#privacy-policy" className="hover:text-primary transition-colors">
                 Privacy Policy
               </a>
 
-              <a href="/terms-and-conditions" className="hover:text-primary transition-colors">
+              <a href="#terms-and-conditions" className="hover:text-primary transition-colors">
                 Terms &amp; Conditions
               </a>
 
-              <a href="/disclaimer" className="hover:text-primary transition-colors">
+              <a href="#disclaimer" className="hover:text-primary transition-colors">
                 Disclaimer
+              </a>
+
+              <a href="#cookie-policy" className="hover:text-primary transition-colors">
+                Cookie Policy
               </a>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+/* ================= CORE ================= */
+
 import { HomePage } from "./components/HomePage";
 import { ClaimsPage } from "./components/ClaimsPage";
 import { SolutionsPage } from "./components/SolutionsPage";
@@ -33,7 +35,19 @@ import { EngineeringInsurancePage } from "./components/EngineeringInsurancePage"
 import { MoneyInsurancePage } from "./components/MoneyInsurancePage";
 import { MarineCargoInsurancePage } from "./components/MarineCargoInsurancePage";
 
+/* ================= FOOTER / LEGAL PAGES ================= */
 
+import { CSRPage } from "./components/CSRPage";
+import { ArticlesPage } from "./components/ArticlesPage";
+import { ArticleDetailPage } from "./components/ArticleDetailPage";
+import { PrivacyPolicyPage } from "./components/PrivacyPolicyPage";
+import { TermsConditionsPage } from "./components/TermsConditionsPage";
+import { DisclaimerPage } from "./components/DisclaimerPage";
+import { CookiePolicyPage } from "./components/CookiePolicyPage";
+
+/* ================= COOKIE BANNER ================= */
+
+import { CookieBanner } from "./components/CookieBanner";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -48,12 +62,15 @@ export default function App() {
     handleNavigation();
     window.addEventListener("hashchange", handleNavigation);
 
-    <div className="min-h-screen bg-white overflow-x-hidden"></div>
-
     return () => window.removeEventListener("hashchange", handleNavigation);
   }, []);
 
   const renderPage = () => {
+    // Dynamic article route
+    if (currentPage.startsWith("article/")) {
+      return <ArticleDetailPage />;
+    }
+
     switch (currentPage) {
       /* ================= CORE ================= */
       case "home":
@@ -70,6 +87,26 @@ export default function App() {
 
       case "solutions/insurance":
         return <InsurancePage />;
+
+      /* ================= FOOTER / LEGAL ================= */
+
+      case "csr":
+        return <CSRPage />;
+
+      case "articles":
+        return <ArticlesPage />;
+
+      case "privacy-policy":
+        return <PrivacyPolicyPage />;
+
+      case "terms-and-conditions":
+        return <TermsConditionsPage />;
+
+      case "disclaimer":
+        return <DisclaimerPage />;
+
+      case "cookie-policy":
+        return <CookiePolicyPage />;
 
       /* ================= INSURANCE DETAILS ================= */
 
@@ -151,5 +188,10 @@ export default function App() {
     }
   };
 
-  return renderPage();
+  return (
+    <>
+      {renderPage()}
+      <CookieBanner />
+    </>
+  );
 }
