@@ -14,12 +14,12 @@ import { Footer } from "./Footer";
 /* ========= TUNING ========= */
 /* ========================== */
 
-/* HERO HEIGHT */
-const HERO_HEIGHT = "min-h-screen";
+/* HERO HEIGHT (desktop full, mobile slightly shorter) */
+const HERO_HEIGHT = "min-h-[85vh] md:min-h-screen";
 
 /* Vertical spacing */
-const HERO_TOP_PADDING = "pt-5 md:pt-5";
-const HERO_BOTTOM_PADDING = "pb-16 md:pb-24";
+const HERO_TOP_PADDING = "pt-24 md:pt-5";
+const HERO_BOTTOM_PADDING = "pb-12 md:pb-24";
 
 /* Logo */
 const LOGO_WIDTH_MOBILE = "w-full";
@@ -27,14 +27,14 @@ const LOGO_WIDTH_DESKTOP = "w-[360px]";
 const LOGO_MAX = "max-w-[520px]";
 
 /* Logo shift */
-const LOGO_SHIFT_MOBILE = "-mt-6";
+const LOGO_SHIFT_MOBILE = "mt-0";
 const LOGO_SHIFT_DESKTOP = "md:-mt-20";
 
 /* Descriptor overlap */
 const DESCRIPTOR_OVERLAP = "-mt-20";
 
-/* Card width knob (MAIN CONTROL) */
-const CARD_WIDTH = "max-w-[300px]"; // 🔥 increase/decrease this
+/* Card width knob */
+const CARD_WIDTH = "max-w-[300px]";
 
 /* ========================== */
 
@@ -48,7 +48,7 @@ export function CSRPage() {
         className={`
           ${HERO_HEIGHT}
           flex
-          items-center
+          items-start md:items-center
           justify-center
           px-6
           ${HERO_TOP_PADDING}
@@ -95,8 +95,8 @@ export function CSRPage() {
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="flex flex-col items-center text-center space-y-6">
-              <h1 className="text-5xl">
+            <div className="flex flex-col items-center text-center space-y-6 mt-12 md:mt-0">
+              <h1 className="text-4xl md:text-5xl">
                 Corporate Social Responsibility
               </h1>
 

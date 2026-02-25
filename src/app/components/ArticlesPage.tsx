@@ -8,28 +8,28 @@ import { articles } from "../../data/articles";
 /* ========================== */
 
 /* HERO HEIGHT */
-const HERO_HEIGHT = "min-h-screen";
+const HERO_HEIGHT = "min-h-[85vh] md:min-h-screen";
 
 /* Vertical spacing */
-const HERO_TOP_PADDING = "pt-5 md:pt-5";     // 🔥 move entire hero up/down
-const HERO_BOTTOM_PADDING = "pb-16 md:pb-24";
+const HERO_TOP_PADDING = "pt-24 md:pt-5";
+const HERO_BOTTOM_PADDING = "pb-12 md:pb-24";
 
 /* Logo */
 const LOGO_WIDTH_MOBILE = "w-full";
 const LOGO_WIDTH_DESKTOP = "w-[360px]";
 const LOGO_MAX = "max-w-[520px]";
 
-/* Logo shift (match CSR system) */
-const LOGO_SHIFT_MOBILE = "-mt-6";
+/* Logo shift */
+const LOGO_SHIFT_MOBILE = "mt-0";
 const LOGO_SHIFT_DESKTOP = "md:-mt-20";
 
 /* Descriptor overlap */
 const DESCRIPTOR_OVERLAP = "-mt-20";
 
 /* Card sizing control */
-const CARD_WIDTH = "w-full max-w-[380px]"; // 🔥 adjust width
-const CARD_HEIGHT = "h-[480px]";           // 🔥 adjust full card height
-const IMAGE_HEIGHT = "h-[220px]";          // 🔥 adjust image height
+const CARD_WIDTH = "w-full max-w-[380px]";
+const CARD_HEIGHT = "h-[480px]";
+const IMAGE_HEIGHT = "h-[220px]";
 
 /* ========================== */
 
@@ -43,7 +43,7 @@ export function ArticlesPage() {
         className={`
           ${HERO_HEIGHT}
           flex
-          items-center
+          items-start md:items-center
           justify-center
           px-6
           ${HERO_TOP_PADDING}
@@ -90,8 +90,8 @@ export function ArticlesPage() {
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="flex flex-col items-center text-center space-y-6">
-              <h1 className="text-5xl">
+            <div className="flex flex-col items-center text-center space-y-6 mt-12 md:mt-0">
+              <h1 className="text-4xl md:text-5xl">
                 Articles
               </h1>
 
@@ -112,7 +112,7 @@ export function ArticlesPage() {
             <a
               key={article.slug}
               href={`#article/${article.slug}`}
-              className={`${CARD_WIDTH}`}
+              className={CARD_WIDTH}
             >
               <div
                 className={`
@@ -126,13 +126,12 @@ export function ArticlesPage() {
                   hover:shadow-md
                 `}
               >
-
                 {/* IMAGE */}
                 <div className={`${IMAGE_HEIGHT} overflow-hidden`}>
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover transition duration-500 hover:scale-100"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
@@ -156,7 +155,6 @@ export function ArticlesPage() {
                   </div>
 
                 </div>
-
               </div>
             </a>
           ))}

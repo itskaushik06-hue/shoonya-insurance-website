@@ -340,4 +340,10 @@ html {
 html, body {
   overflow-x: hidden;
 }
-
+@media (max-width: 767px) {
+  body.mobile-hero-active header img {
+    opacity: 0 !important;
+    transform: translateY(-4px);
+    pointer-events: none;
+  }
+}
