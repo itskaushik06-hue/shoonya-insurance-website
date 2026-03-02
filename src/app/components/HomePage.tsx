@@ -15,6 +15,8 @@ import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
 import { FloatingCTAs } from "./FloatingCTAs";
 import { Hero } from "./Hero";
+import { AboutSection } from "./AboutSection";
+import { font } from "../lib/typography";
 
 
 export function HomePage() {
@@ -30,42 +32,14 @@ export function HomePage() {
       
 
       {/* ================= About Shoonya ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
-          
-          <h2>About Shoonya</h2>
-
-          <p className="text-2xl font-semibold text-grey-700">
-            Built on over 75 years of insurance experience.
-          </p>
-
-          <div className="space-y-5 text-grey-600 leading-relaxed text-justify">
-            <p>
-              Shoonya was founded on a simple belief that insurance works best when
-              it is understood, not rushed.
-            </p>
-
-            <p>
-              Across generations, our family has helped individuals, families, and
-              businesses navigate uncertainty by listening carefully, asking the
-              right questions, and advising responsibly.
-            </p>
-
-            <p>
-              We don’t chase transactions or short-term decisions. We focus on
-              clarity, perspective, and long-term protection, so our clients feel
-              confident not just today, but years from now.
-            </p>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
 
       {/* ================= What We Do ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-5xl mx-auto text-center mb-16">
-          <h2>What We Do</h2>
-          <p className="mt-4 text-grey-600">
+          <h2 className="text-2xl">What We Do</h2>
+          <p className={`mt-4 ${font("bodyMuted")}`}>
             We simplify insurance through a consultative approach.
           </p>
         </div>
@@ -92,18 +66,49 @@ export function HomePage() {
 
       {/* ================= Insurance Solutions ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="max-w-5xl mx-auto text-center mb-16">
-          <h2>Insurance Solutions We Offer</h2>
-          <p className="mt-4 text-grey-600">
+        <div className="max-w-5xl mx-auto text-center mb-12">
+          <h2 className="text-2xl">Insurance Solutions We Offer</h2>
+          <p className={`mt-4 ${font("bodyMuted")}`}>
             Coverage across individual, business, industrial, and specialized needs.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-14 max-w-4xl mx-auto">
-          <Solution icon={<Users />} label="Individual Insurance" />
-          <Solution icon={<Building2 />} label="Business Insurance" />
-          <Solution icon={<Factory />} label="Industrial Insurance" />
-          <Solution icon={<Landmark />} label="Specialized Insurance" />
+        <div className="max-w-6xl mx-auto space-y-4 mb-14 text-justify">
+          <p className={font("bodyMuted")}>
+            From risk assessment to claims resolution, we design protection, not just policies.
+            We deliver tailor-made insurance solutions across individual, business, industrial,
+            and specialized segments through structured risk analysis, customized policy
+            wordings, and dedicated claims assistance.
+          </p>
+          <p className={font("bodyMuted")}>
+            In today’s dynamic risk environment, we also structure advanced protection programs
+            including cyber insurance, data protection insurance, credit insurance, liability
+            insurance, marine insurance, customs bond insurance, and customs duty insurance to
+            safeguard evolving commercial and trade exposures.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <Solution
+            icon={<Users />}
+            label="Individual Insurance"
+            text="Comprehensive protection for health, home, travel, and personal assets, designed around your individual risk profile and long-term financial security."
+          />
+          <Solution
+            icon={<Building2 />}
+            label="Business Insurance"
+            text="Strategic risk transfer solutions for SMEs and corporates, covering property, business interruption, liability exposures, cyber and data risks, trade credit, marine transit, and customs-related obligations."
+          />
+          <Solution
+            icon={<Factory />}
+            label="Industrial Insurance"
+            text="Risk-engineered programs for manufacturing, infrastructure, logistics, and large-scale operations, addressing property damage, machinery breakdown, marine cargo, customs-bonded exposures, credit risks, and complex liability frameworks."
+          />
+          <Solution
+            icon={<Landmark />}
+            label="Specialized Insurance"
+            text="Bespoke structures for niche industries and complex environments, including professional indemnity, directors and officers liability, cyber liability, customs duty insurance, performance bonds, and trade-risk solutions."
+          />
         </div>
       </section>
 
@@ -144,8 +149,8 @@ export function HomePage() {
       {/* ================= Testimonials ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-5xl mx-auto text-center mb-16">
-          <h2>What Our Clients Say</h2>
-          <p className="mt-4 text-grey-600">
+          <h2 className="text-2xl">What Our Clients Say</h2>
+          <p className={`mt-4 ${font("bodyMuted")}`}>
             Trusted by individuals and businesses who value clarity and integrity.
           </p>
         </div>
@@ -170,8 +175,8 @@ export function HomePage() {
       {/* ================= Final CTA ================= */}
       <section id="final-cta" className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-5xl mx-auto text-center space-y-6">
-          <h2>Let Us Talk About Your Coverage</h2>
-          <p className="text-lg text-grey-600">
+          <h2 className="text-2xl">Let Us Talk About Your Coverage</h2>
+          <p className={`${font("heroSupport")} text-grey-600`}>
             Real humans. Real care. Experts who respect your time and guide you to the right protection.
           </p>
           <CTAButtons variant="large" className="justify-center" />
@@ -199,19 +204,20 @@ function Feature({ icon, title, text }: any) {
   return (
     <div className="space-y-4 text-left">
       <div className="text-primary">{icon}</div>
-      <h3>{title}</h3>
-      <p className="text-grey-600 leading-relaxed text-justify">{text}</p>
+      <h3 className="text-xl">{title}</h3>
+      <p className={`${font("bodyMuted")} text-justify`}>{text}</p>
     </div>
   );
 }
 
-function Solution({ icon, label }: any) {
+function Solution({ icon, label, text }: any) {
   return (
-    <div className="space-y-3 text-center">
-      <div className="flex justify-center text-primary">{icon}</div>
-      <h4 className="hover:text-primary transition-colors cursor-pointer">
+    <div className="h-full border border-grey-200 rounded-xl bg-grey-50 p-6 space-y-4 text-left">
+      <div className="text-primary">{icon}</div>
+      <h4 className="text-lg hover:text-primary transition-colors cursor-pointer">
         {label}
       </h4>
+      <p className={font("bodyMuted")}>{text}</p>
     </div>
   );
 }
@@ -219,10 +225,10 @@ function Solution({ icon, label }: any) {
 function ValueCard({ title, highlight, paragraphs }: any) {
   return (
     <div className="border border-grey-200 rounded-xl p-8 bg-white space-y-5">
-      <h3>{title}</h3>
-      <p className="font-semibold text-grey-800">{highlight}</p>
+      <h3 className="text-xl">{title}</h3>
+      <p className={`${font("body")} font-semibold text-grey-800`}>{highlight}</p>
       {paragraphs.map((p: string, i: number) => (
-        <p key={i} className="text-grey-600 leading-relaxed text-justify">
+        <p key={i} className={`${font("bodyMuted")} text-justify`}>
           {p}
         </p>
       ))}
@@ -234,8 +240,8 @@ function Testimonial({ text, author }: any) {
   return (
     <div className="border border-grey-200 rounded-xl p-6 bg-white space-y-4">
       <Quote className="text-primary opacity-30" />
-      <p className="text-grey-700 italic leading-relaxed">“{text}”</p>
-      <p className="text-sm text-grey-500 font-medium">{author}</p>
+      <p className={`${font("body")} text-grey-700 italic`}>“{text}”</p>
+      <p className="text-xs text-grey-500 font-medium">{author}</p>
     </div>
   );
 }

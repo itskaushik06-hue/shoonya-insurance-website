@@ -1,4 +1,5 @@
 import React from "react";
+import { font } from "../lib/typography";
 
 /* ===== HERO MOBILE TUNING ===== */
 const LOGO_WIDTH = "w-[85vw]";
@@ -10,9 +11,6 @@ const TOP_PADDING = "pt-40";
 
 const BOTTOM_PADDING = "pb-50";
 const TEXT_BLOCK_GAP = "space-y-4";
-
-const HEADLINE_SIZE = "text-[32px]";
-const SUPPORT_SIZE = "text-[16px]";
 
 export function HeroMobile() {
   return (
@@ -49,10 +47,10 @@ export function HeroMobile() {
 
         {/* DESCRIPTOR (OVERLAPS LOGO) */}
         <div className={`${DESCRIPTOR_OFFSET}`}>
-          <p className="text-[14px] tracking-wide text-grey-500 leading-snug">
+          <p className={font("heroDescriptor", "text-grey-500")}>
             Claim Assistance · Customised Insurance
           </p>
-          <p className="text-[14px] tracking-wide text-grey-500 leading-snug">
+          <p className={font("heroDescriptor", "text-grey-500")}>
             A Safer and Greener Future
           </p>
         </div>
@@ -69,8 +67,7 @@ export function HeroMobile() {
             className={`
               max-w-xs
               mx-auto
-              ${HEADLINE_SIZE}
-              leading-snug
+              ${font("heroTitle")}
               hover:text-primary
               transition-colors
             `}
@@ -82,9 +79,8 @@ export function HeroMobile() {
         {/* SUPPORTING COPY */}
         <p
           className={`
-            ${SUPPORT_SIZE}
+            ${font("heroSupport")}
             text-grey-600
-            leading-relaxed
             max-w-xs
           `}
         >

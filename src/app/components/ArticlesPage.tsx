@@ -2,29 +2,12 @@ import React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { articles } from "../../data/articles";
+import { font } from "../lib/typography";
+import { sectionHero } from "../lib/sectionHero";
 
 /* ========================== */
 /* ========= TUNING ========= */
 /* ========================== */
-
-/* HERO HEIGHT */
-const HERO_HEIGHT = "min-h-[85vh] md:min-h-screen";
-
-/* Vertical spacing */
-const HERO_TOP_PADDING = "pt-24 md:pt-5";
-const HERO_BOTTOM_PADDING = "pb-12 md:pb-24";
-
-/* Logo */
-const LOGO_WIDTH_MOBILE = "w-full";
-const LOGO_WIDTH_DESKTOP = "w-[360px]";
-const LOGO_MAX = "max-w-[520px]";
-
-/* Logo shift */
-const LOGO_SHIFT_MOBILE = "mt-0";
-const LOGO_SHIFT_DESKTOP = "md:-mt-20";
-
-/* Descriptor overlap */
-const DESCRIPTOR_OVERLAP = "-mt-20";
 
 /* Card sizing control */
 const CARD_WIDTH = "w-full max-w-[380px]";
@@ -41,19 +24,19 @@ export function ArticlesPage() {
       {/* ================= HERO ================= */}
       <section
         className={`
-          ${HERO_HEIGHT}
+          ${sectionHero.full.minHeight}
           flex
           items-start md:items-center
           justify-center
           px-6
-          ${HERO_TOP_PADDING}
-          ${HERO_BOTTOM_PADDING}
+          ${sectionHero.full.topPadding}
+          ${sectionHero.full.bottomPadding}
         `}
       >
         <div className="relative w-full max-w-7xl mx-auto">
 
           {/* Divider (desktop only) */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+          <div className={sectionHero.divider}>
             <div className="h-full w-px bg-grey-300" />
           </div>
 
@@ -63,39 +46,38 @@ export function ArticlesPage() {
             <div
               className={`
                 flex flex-col items-center text-center
-                ${LOGO_SHIFT_MOBILE}
-                ${LOGO_SHIFT_DESKTOP}
+                ${sectionHero.full.logoShiftDesktop}
               `}
             >
               <img
                 src="/images/sectionhero.png"
                 alt="Shoonya Insurance Brokers"
                 className={`
-                  ${LOGO_WIDTH_MOBILE}
-                  ${LOGO_WIDTH_DESKTOP}
-                  ${LOGO_MAX}
+                  ${sectionHero.logoMobile}
+                  ${sectionHero.full.logoDesktop}
+                  ${sectionHero.logoMax}
                   h-auto
                   object-contain
                 `}
               />
 
-              <div className={`${DESCRIPTOR_OVERLAP} space-y-1`}>
-                <p className="text-sm text-grey-600 tracking-wide">
+              <div className={sectionHero.descriptorWrap}>
+                <p className={sectionHero.descriptorText}>
                   Claim Assistance · Customised Insurance
                 </p>
-                <p className="text-sm text-grey-600 tracking-wide">
+                <p className={sectionHero.descriptorText}>
                   A Safer and Greener Future
                 </p>
               </div>
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="flex flex-col items-center text-center space-y-6 mt-12 md:mt-0">
-              <h1 className="text-4xl md:text-5xl">
+            <div className={sectionHero.full.rightColumn}>
+              <h1 className={sectionHero.title}>
                 Articles
               </h1>
 
-              <p className="text-sm tracking-wide text-grey-600 uppercase">
+              <p className={sectionHero.kicker}>
                 Insights and Analysis on Insurance Trends
               </p>
             </div>
@@ -106,7 +88,7 @@ export function ArticlesPage() {
 
       {/* ================= GRID ================= */}
       <section className="px-6 py-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
+        <div className={`max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center ${font("contentScale")}`}>
 
           {articles.map((article) => (
             <a
@@ -142,11 +124,11 @@ export function ArticlesPage() {
                     {article.category}
                   </p>
 
-                  <h3 className="text-xl leading-snug hover:text-primary transition-colors">
+                  <h3 className={`${font("sectionHeading")} hover:text-primary transition-colors`}>
                     {article.title}
                   </h3>
 
-                  <p className="text-sm text-grey-600 leading-relaxed flex-1">
+                  <p className={`${font("bodyMuted")} flex-1`}>
                     {article.description}
                   </p>
 

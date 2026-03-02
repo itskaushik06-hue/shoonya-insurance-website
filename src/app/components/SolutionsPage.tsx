@@ -3,24 +3,16 @@ import { ShieldCheck, Umbrella } from "lucide-react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
+import { font } from "../lib/typography";
+import { sectionHero } from "../lib/sectionHero";
 
 /* ================= TUNING ================= */
 
 const SECTION_Y = "py-20";
-const HERO_MIN_H = "min-h-[80vh]";
-
-/* Logo */
-const LOGO_W_DESKTOP = "w-[340px]";
-const LOGO_W_MOBILE = "w-full";
-const LOGO_MAX_W = "max-w-[520px]";
-
-/* 🔑 Desktop-only left logo vertical offset */
-const LOGO_SHIFT_DESKTOP = "md:-mt-16"; // ← THIS moves only the left block up
-
 /* Text */
-const HERO_TITLE = "text-5xl";
-const HERO_SUB = "text-sm";
-const HERO_SUPPORT = "text-base";
+const HERO_TITLE = sectionHero.title;
+const HERO_SUB = sectionHero.kicker;
+const HERO_SUPPORT = sectionHero.support;
 
 export function SolutionsPage() {
   return (
@@ -30,17 +22,17 @@ export function SolutionsPage() {
       {/* ================= HERO ================= */}
       <section
         className={`
-          ${HERO_MIN_H}
+          ${sectionHero.compact.minHeight}
           flex
           items-center
           justify-center
           px-5
-          ${SECTION_Y}
+          ${sectionHero.compact.sectionPadding}
         `}
       >
         <div className="relative w-full max-w-7xl mx-auto">
           {/* Divider (desktop only, visual only) */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+          <div className={sectionHero.divider}>
             <div className="h-full w-px bg-grey-300" />
           </div>
 
@@ -52,33 +44,33 @@ export function SolutionsPage() {
                 flex-col
                 items-center
                 text-center
-                ${LOGO_SHIFT_DESKTOP}
+                ${sectionHero.compact.logoShiftDesktop}
               `}
             >
               <img
                 src="/images/sectionhero.png"
                 alt="Shoonya Insurance Brokers"
                 className={`
-                  ${LOGO_W_MOBILE}
-                  md:${LOGO_W_DESKTOP}
-                  ${LOGO_MAX_W}
+                  ${sectionHero.logoMobile}
+                  md:${sectionHero.compact.logoDesktop}
+                  ${sectionHero.logoMax}
                   h-auto
                   object-contain
                 `}
               />
 
-              <div className="-mt-20 space-y-1">
-                <p className="text-sm text-grey-600 tracking-wide">
+              <div className={sectionHero.descriptorWrap}>
+                <p className={sectionHero.descriptorText}>
                   Claim Assistance · Customised Insurance
                 </p>
-                <p className="text-sm text-grey-600 tracking-wide">
+                <p className={sectionHero.descriptorText}>
                   A Safer and Greener Future
                 </p>
               </div>
             </div>
 
             {/* ===== RIGHT ===== */}
-            <div className="flex flex-col items-center text-center space-y-5">
+            <div className={sectionHero.compact.rightColumn}>
               <h1 className={HERO_TITLE}>Solutions</h1>
 
               <p
@@ -122,7 +114,7 @@ export function SolutionsPage() {
 
       {/* ================= SOLUTIONS ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className={`max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 ${font("contentScale")}`}>
           <SolutionCard
             icon={<ShieldCheck />}
             title="Risk"
@@ -184,9 +176,9 @@ function SolutionCard({
         {icon}
       </div>
 
-      <h3>{title}</h3>
+      <h3 className={font("sectionHeading")}>{title}</h3>
 
-      <p className="text-grey-600 leading-relaxed max-w-sm mx-auto">
+      <p className={`${font("bodyMuted")} max-w-sm mx-auto`}>
         {text}
       </p>
 

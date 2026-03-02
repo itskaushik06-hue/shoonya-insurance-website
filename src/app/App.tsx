@@ -34,6 +34,9 @@ import { MachineryBreakdownInsurancePage } from "./components/MachineryBreakdown
 import { EngineeringInsurancePage } from "./components/EngineeringInsurancePage";
 import { MoneyInsurancePage } from "./components/MoneyInsurancePage";
 import { MarineCargoInsurancePage } from "./components/MarineCargoInsurancePage";
+import { ErectionAllRiskInsurancePage } from "./components/ErectionAllRiskInsurancePage";
+import { IndiaAllRiskInsurancePage } from "./components/IndiaAllRiskInsurancePage";
+import { IndustrialPropertyInsurancePage } from "./components/IndustrialPropertyInsurancePage";
 
 /* ================= FOOTER / LEGAL PAGES ================= */
 
@@ -181,6 +184,15 @@ export default function App() {
 
       case "marine-cargo-insurance":
         return <MarineCargoInsurancePage />;
+
+      case "erection-all-risk-insurance":
+        return <ErectionAllRiskInsurancePage />;
+
+      case "india-all-risk-insurance":
+        return <IndiaAllRiskInsurancePage />;
+
+      case "industrial-property-insurance":
+        return <IndustrialPropertyInsurancePage />;
 
       /* ================= FALLBACK ================= */
       default:

@@ -1,4 +1,5 @@
 import React from "react";
+import { font } from "../lib/typography";
 
 /* ===================== TUNING ===================== */
 
@@ -14,6 +15,7 @@ const DESCRIPTOR_2XL = "2xl:bottom-[180px]";
 const HEADLINE_POSITION = "top-[61.8vh]";        // MAIN CONTROL
 const HEADLINE_POSITION_XL = "xl:top-[62vh]";
 const HEADLINE_POSITION_2XL = "2xl:top-[60vh]";
+const DESKTOP_HEADLINE_SIZE = "text-[clamp(1.5rem,1.2rem+0.9vw,1.5rem)] leading-tight";
 
 /* ================================================== */
 
@@ -64,10 +66,7 @@ export function HeroDesktop() {
             ${DESCRIPTOR_POSITION}
             ${DESCRIPTOR_XL}
             ${DESCRIPTOR_2XL}
-            text-sm
-            xl:text-base
-            2xl:text-lg
-            tracking-wide
+            ${font("heroDescriptor")}
             text-grey-600
             text-center
           `}
@@ -92,35 +91,29 @@ export function HeroDesktop() {
       >
         <a href="#final-cta">
           <h1
-            className="
+            className={`
               max-w-4xl
               mx-auto
-              text-3xl
-              xl:text-4xl
-              2xl:text-5xl
-              leading-tight
+              ${DESKTOP_HEADLINE_SIZE}
               hover:text-primary
               transition-colors
               cursor-pointer
               mb-4
               xl:mb-6
-            "
+            `}
           >
             Let’s start with a conversation
           </h1>
         </a>
 
         <p
-          className="
-            text-base
-            xl:text-lg
-            2xl:text-xl
+          className={`
+            ${font("heroSupport")}
             text-grey-600
-            leading-relaxed
             max-w-xl
-            xl:max-w-2xl
+            xl:max-w-1xl
             mx-auto
-          "
+          `}
         >
           No pressure. No sales calls. Just humans who care.
         </p>

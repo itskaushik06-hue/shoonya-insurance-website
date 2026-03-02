@@ -1,21 +1,10 @@
 import React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { font } from "../lib/typography";
+import { sectionHero } from "../lib/sectionHero";
 
 /* ===== HERO SYSTEM (Aligned with CSR / Articles / Privacy) ===== */
-
-const HERO_HEIGHT = "min-h-[85vh] md:min-h-screen";
-const HERO_TOP_PADDING = "pt-24 md:pt-5";
-const HERO_BOTTOM_PADDING = "pb-12 md:pb-24";
-
-const LOGO_WIDTH_MOBILE = "w-full";
-const LOGO_WIDTH_DESKTOP = "w-[360px]";
-const LOGO_MAX = "max-w-[520px]";
-
-const LOGO_SHIFT_MOBILE = "mt-0";
-const LOGO_SHIFT_DESKTOP = "md:-mt-20";
-
-const DESCRIPTOR_OVERLAP = "-mt-20";
 
 export function TermsConditionsPage() {
   return (
@@ -25,19 +14,19 @@ export function TermsConditionsPage() {
       {/* ================= HERO ================= */}
       <section
         className={`
-          ${HERO_HEIGHT}
+          ${sectionHero.full.minHeight}
           flex
           items-start md:items-center
           justify-center
           px-6
-          ${HERO_TOP_PADDING}
-          ${HERO_BOTTOM_PADDING}
+          ${sectionHero.full.topPadding}
+          ${sectionHero.full.bottomPadding}
         `}
       >
         <div className="relative w-full max-w-7xl mx-auto">
 
           {/* Divider */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+          <div className={sectionHero.divider}>
             <div className="h-full w-px bg-grey-300" />
           </div>
 
@@ -47,40 +36,39 @@ export function TermsConditionsPage() {
             <div
               className={`
                 flex flex-col items-center text-center
-                ${LOGO_SHIFT_MOBILE}
-                ${LOGO_SHIFT_DESKTOP}
+                ${sectionHero.full.logoShiftDesktop}
               `}
             >
               <img
                 src="/images/sectionhero.png"
                 alt="Shoonya Insurance Brokers"
                 className={`
-                  ${LOGO_WIDTH_MOBILE}
-                  ${LOGO_WIDTH_DESKTOP}
-                  ${LOGO_MAX}
+                  ${sectionHero.logoMobile}
+                  ${sectionHero.full.logoDesktop}
+                  ${sectionHero.logoMax}
                   h-auto
                   object-contain
                 `}
               />
 
-              <div className={`${DESCRIPTOR_OVERLAP} space-y-1`}>
-                <p className="text-sm text-grey-600 tracking-wide">
+              <div className={sectionHero.descriptorWrap}>
+                <p className={sectionHero.descriptorText}>
                   Claim Assistance · Customised Insurance
                 </p>
-                <p className="text-sm text-grey-600 tracking-wide">
+                <p className={sectionHero.descriptorText}>
                   A Safer and Greener Future
                 </p>
               </div>
             </div>
 
             {/* RIGHT */}
-            <div className="flex flex-col items-center text-center space-y-6 mt-12 md:mt-0">
-              <h1 className="text-4xl md:text-5xl">
-                Terms & Conditions
+            <div className={sectionHero.full.rightColumn}>
+              <h1 className={sectionHero.title}>
+                Terms of Use
               </h1>
 
-              <p className="text-sm tracking-wide text-grey-600 uppercase">
-                Conditions Governing Website Use
+              <p className={sectionHero.kicker}>
+                Effective: 27 February 2026
               </p>
             </div>
 
@@ -90,72 +78,151 @@ export function TermsConditionsPage() {
 
       {/* ================= CONTENT ================= */}
       <section className="px-6 py-20">
-        <div className="max-w-4xl mx-auto space-y-10 text-grey-700 leading-relaxed">
+        <div className={`max-w-4xl mx-auto space-y-10 text-grey-700 ${font("body")} ${font("contentScale")}`}>
 
           <div>
-            <h2>1. Acceptance of Terms</h2>
+            <h2>Website Terms of Use</h2>
             <p>
-              By accessing this website, you agree to be bound by these Terms and
-              Conditions. If you do not agree with any part of these terms, you
-              should discontinue use of the website immediately.
+              Please read these Terms carefully before using this website. By
+              accessing or using this website, you agree to be bound by these
+              Terms of Use and our Privacy Notice. If you do not agree, you must
+              not access or use this website.
+            </p>
+            <p>
+              This website is operated by Shoonya Insurance Brokers Private Limited,
+              a Direct Insurance Broker (Life &amp; General), IRDAI License No. 905
+              (valid until 17 July 2026), registered office: 7/9 Trikuta Nagar,
+              Jammu, J&amp;K - 180012, India, CIN: U66000JK2022PTC014062.
             </p>
           </div>
 
           <div>
-            <h2>2. Scope of Services</h2>
+            <h2>1. Accuracy of Information</h2>
             <p>
-              Shoonya Insurance Brokers Private Limited acts as a licensed
-              direct insurance broker. All insurance products are subject to
-              underwriting approval by respective insurers. Coverage terms,
-              exclusions, and conditions are governed by the policy documents
-              issued by the insurer.
+              We make reasonable efforts to keep website information accurate at
+              the time of publication, but we do not guarantee completeness,
+              accuracy, or timeliness. Shoonya accepts no liability for errors
+              or omissions.
             </p>
           </div>
 
           <div>
-            <h2>3. No Financial Advice</h2>
+            <h2>2. Intellectual Property Rights</h2>
             <p>
-              Information provided on this website is general in nature and
-              does not constitute legal, financial, or investment advice.
-              Users are advised to seek independent professional consultation
-              before making financial decisions.
+              All website content including text, graphics, logos, trademarks,
+              and design elements belongs to Shoonya or its licensors and is
+              protected by applicable intellectual property laws.
+            </p>
+            <p>
+              You are granted a limited, non-exclusive, non-transferable right
+              to access and use the website for personal or internal
+              non-commercial organizational purposes only.
+            </p>
+            <p>
+              You may not reproduce, distribute, modify, frame, or commercially
+              exploit any website content without prior written consent.
             </p>
           </div>
 
           <div>
-            <h2>4. Limitation of Liability</h2>
+            <h2>3. Permitted Use</h2>
             <p>
-              Shoonya Insurance Brokers shall not be liable for indirect,
-              incidental, or consequential losses arising from website usage,
-              service delays, or reliance on information provided herein.
+              You may print or download content solely for personal or internal
+              non-commercial use.
+            </p>
+            <p>
+              You shall not use this website for unlawful purposes, transmit
+              defamatory/obscene/abusive content, send spam, or interfere with
+              website functionality.
             </p>
           </div>
 
           <div>
-            <h2>5. Intellectual Property</h2>
+            <h2>4. Restrictions</h2>
             <p>
-              All materials, branding, design elements, text, and graphics on
-              this website remain the intellectual property of Shoonya Insurance
-              Brokers unless otherwise stated. Unauthorized reproduction or
-              distribution is prohibited.
+              You may not misuse Shoonya’s name, logo, or brand. Any linking to
+              this website requires prior written approval. Shoonya reserves the
+              right to withdraw such consent at any time.
             </p>
           </div>
 
           <div>
-            <h2>6. Regulatory Compliance</h2>
+            <h2>5. Modification and Access</h2>
             <p>
-              Shoonya Insurance Brokers operates under applicable regulations
-              and licensing frameworks. Any disputes or claims shall be handled
-              in accordance with governing insurance and brokerage regulations.
+              Shoonya may modify, suspend, or discontinue this website or any
+              part of it without notice. Access may be restricted or terminated
+              if these Terms are breached.
             </p>
           </div>
 
           <div>
-            <h2>7. Governing Law</h2>
+            <h2>6. Confidentiality and Data Use</h2>
             <p>
-              These Terms and Conditions are governed by the laws of India.
-              Any disputes arising from the use of this website shall fall
-              under the jurisdiction of the competent courts.
+              Information collected through this website is handled in accordance
+              with our Privacy Notice. Data may be used for advisory, regulatory,
+              analytics, research, and crime prevention purposes as permitted by law.
+            </p>
+            <p>
+              Where clients provide personal data of other individuals, Shoonya
+              assumes appropriate consents/disclosures have been obtained.
+            </p>
+          </div>
+
+          <div>
+            <h2>7. Indemnity</h2>
+            <p>
+              You agree to indemnify and hold Shoonya harmless against costs,
+              claims, losses, or damages (including legal fees) arising from
+              misuse of this website or breach of these Terms.
+            </p>
+          </div>
+
+          <div>
+            <h2>8. Third-Party Links</h2>
+            <p>
+              This website may contain third-party links. Shoonya does not
+              control and is not responsible for their content, security, or
+              privacy practices. Access is at your own risk.
+            </p>
+          </div>
+
+          <div>
+            <h2>9. Disclaimer of Liability</h2>
+            <p>
+              This website is provided free of charge without warranties unless
+              expressly stated. Shoonya is not liable for loss or damage arising
+              from website use, except where liability cannot be excluded under law.
+            </p>
+          </div>
+
+          <div>
+            <h2>10. Changes to Terms</h2>
+            <p>
+              Shoonya may amend these Terms from time to time. Continued use
+              after updates constitutes acceptance of the revised Terms.
+            </p>
+          </div>
+
+          <div>
+            <h2>11. Governing Law and Jurisdiction</h2>
+            <p>
+              These Terms are governed by the laws of India. Courts of Jammu
+              &amp; Kashmir / Union Territory of Jammu &amp; Kashmir shall have
+              exclusive jurisdiction over related disputes.
+            </p>
+          </div>
+
+          <div>
+            <h2>Contact Information</h2>
+            <p>Shoonya Insurance Brokers Private Limited</p>
+            <p>7/9 Trikuta Nagar, Jammu, J&amp;K - 180012, India</p>
+            <p>CIN: U66000JK2022PTC014062</p>
+            <p>IRDAI License No. 905 (Valid until 17 July 2026)</p>
+            <p>Email: shoonyabrokers@gmail.com</p>
+            <p>Contact No.: +91 9419286666</p>
+            <p className="font-medium text-grey-800">
+              Shoonya acts solely as an intermediary between clients and insurers
+              and does not underwrite insurance risk.
             </p>
           </div>
 

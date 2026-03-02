@@ -2,27 +2,19 @@ import React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
+import { font } from "../lib/typography";
+import { sectionHero } from "../lib/sectionHero";
 
 /* ================= TUNING ================= */
 
 /* Shared spacing */
 const SECTION_Y = "py-20";
 
-/* HERO — EXACTLY SAME CONTRACT AS CLAIMS */
-const HERO_MIN_H = "min-h-auto md:min-h-[80vh]";
-
-/* Logo */
-const LOGO_W_DESKTOP = "w-[340px]";
-const LOGO_W_MOBILE = "w-full";
-const LOGO_MAX_W = "max-w-[520px]";
-const LOGO_TEXT_OVERLAP = "-mt-20";
-const LOGO_SHIFT_DESKTOP = "md:-mt-16";
-
 /* Text */
-const HERO_TITLE = "text-5xl";
-const HERO_SUB = "text-sm";
-const HERO_SUPPORT = "text-base";
-const BODY_TEXT = "text-grey-600 text-base leading-relaxed";
+const HERO_TITLE = sectionHero.title;
+const HERO_SUB = sectionHero.kicker;
+const HERO_SUPPORT = sectionHero.support;
+const BODY_TEXT = font("bodyMuted");
 
 export function RiskPage() {
   return (
@@ -32,18 +24,17 @@ export function RiskPage() {
       {/* ================= HERO (MATCHES SOLUTIONS + CLAIMS) ================= */}
       <section
         className={`
-          ${HERO_MIN_H}
+          ${sectionHero.compact.minHeight}
           flex
           items-start md:items-center
           justify-center
           px-6
-          pt-24 pb-16
-          md:py-20
+          ${sectionHero.compact.sectionPadding}
         `}
       >
         <div className="relative w-full max-w-7xl mx-auto">
           {/* Divider (desktop only) */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+          <div className={sectionHero.divider}>
             <div className="h-full w-px bg-grey-300" />
           </div>
 
@@ -55,33 +46,33 @@ export function RiskPage() {
                 flex-col
                 items-center
                 text-center
-                ${LOGO_SHIFT_DESKTOP}
+                ${sectionHero.compact.logoShiftDesktop}
               `}
             >
               <img
                 src="/images/sectionhero.png"
                 alt="Shoonya Insurance Brokers"
                 className={`
-                  ${LOGO_W_MOBILE}
-                  md:${LOGO_W_DESKTOP}
-                  ${LOGO_MAX_W}
+                  ${sectionHero.logoMobile}
+                  md:${sectionHero.compact.logoDesktop}
+                  ${sectionHero.logoMax}
                   h-auto
                   object-contain
                 `}
               />
 
-              <div className={`${LOGO_TEXT_OVERLAP} space-y-1`}>
-                <p className="text-sm text-grey-600 tracking-wide">
+              <div className={sectionHero.descriptorWrap}>
+                <p className={sectionHero.descriptorText}>
                   Claim Assistance · Customised Insurance
                 </p>
-                <p className="text-sm text-grey-600 tracking-wide">
+                <p className={sectionHero.descriptorText}>
                   A Safer and Greener Future
                 </p>
               </div>
             </div>
 
             {/* ===== RIGHT (CONTENT) ===== */}
-            <div className="flex flex-col items-center text-center space-y-5">
+            <div className={sectionHero.compact.rightColumn}>
               <h1 className={HERO_TITLE}>Risk</h1>
 
               <p
@@ -113,7 +104,7 @@ export function RiskPage() {
       </section>
 
       {/* ================= OUR APPROACH ================= */}
-      <section className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center`}>
+      <section className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center ${font("contentScale")}`}>
         <div className="space-y-4">
           <h2>Our Approach</h2>
 
@@ -125,7 +116,7 @@ export function RiskPage() {
 
       {/* ================= RISK PILLARS ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
-        <div className="max-w-7xl mx-auto">
+        <div className={`max-w-7xl mx-auto ${font("contentScale")}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* EXPERT VIEW */}
             <div className="bg-grey-50 border border-grey-200 rounded-xl p-8 space-y-6">
@@ -183,7 +174,7 @@ export function RiskPage() {
                 insurance spend.
               </p>
 
-              <p className="text-sm text-grey-500 italic">
+              <p className={font("heroKicker", "text-grey-500 italic normal-case")}>
                 Always collaboratively. Always transparently.
               </p>
             </div>
@@ -192,11 +183,11 @@ export function RiskPage() {
       </section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center`}>
+      <section className={`max-w-5xl mx-auto px-6 ${SECTION_Y} text-center ${font("contentScale")}`}>
         <div className="space-y-5">
           <h2>We’re here when you’re ready.</h2>
 
-          <p className="text-grey-600 max-w-3xl mx-auto">
+          <p className={`max-w-3xl mx-auto ${font("bodyMuted")}`}>
             If you’d like to talk through your risks or understand your coverage
             better, we’re here.
           </p>

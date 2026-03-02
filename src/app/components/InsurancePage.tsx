@@ -3,29 +3,17 @@ import { ArrowRight } from "lucide-react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
+import { font } from "../lib/typography";
+import { sectionHero } from "../lib/sectionHero";
 
 /* ===================== TUNING ===================== */
 
 const SECTION_Y = "py-20";
 
-/* HERO — SAME CONTRACT AS CLAIMS / SOLUTIONS / RISK */
-const HERO_MIN_H = "min-h-auto md:min-h-[80vh]";
-
-/* Logo */
-const LOGO_W_DESKTOP = "w-[340px]";
-const LOGO_W_MOBILE = "w-full";
-const LOGO_MAX_W = "max-w-[520px]";
-const LOGO_TEXT_OVERLAP = "-mt-20";
-const LOGO_SHIFT_DESKTOP = "md:-mt-16";
-
 /* Text */
-const HERO_TITLE = "text-5xl";
-const HERO_SUB = "text-sm";
-const HERO_SUPPORT = "text-base";
-
-/* === GRID TUNING === */
-const GRID_MAX_W = "max-w-6xl";
-const CARD_MAX_W = "max-w-sm";
+const HERO_TITLE = sectionHero.title;
+const HERO_SUB = sectionHero.kicker;
+const HERO_SUPPORT = sectionHero.support;
 
 /* ================= POLICY ITEM ================= */
 
@@ -39,16 +27,19 @@ function PolicyItem({
   href: string;
 }) {
   return (
-    <a href={href} className="group block space-y-2 transition w-full">
-      <div className="flex items-center justify-between gap-3">
-        <h4 className="group-hover:text-primary transition-colors">
+    <a
+      href={href}
+      className="group flex h-full w-full flex-col rounded-xl border border-grey-200 bg-grey-50 p-5 transition hover:shadow-sm"
+    >
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <h4 className={`${font("cardHeading")} group-hover:text-primary transition-colors`}>
           {name}
         </h4>
 
         <ArrowRight className="w-4 h-4 text-grey-400 group-hover:text-primary group-hover:translate-x-1 transition-all" />
       </div>
 
-      <p className="text-sm text-grey-600 leading-relaxed">
+      <p className={font("bodyMuted")}>
         {description}
       </p>
     </a>
@@ -65,18 +56,17 @@ export function InsurancePage() {
       {/* ================= HERO (MATCHES CLAIMS / SOLUTIONS) ================= */}
       <section
         className={`
-          ${HERO_MIN_H}
+          ${sectionHero.compact.minHeight}
           flex
           items-start md:items-center
           justify-center
           px-6
-          pt-24 pb-16
-          md:py-20
+          ${sectionHero.compact.sectionPadding}
         `}
       >
         <div className="relative w-full max-w-7xl mx-auto">
           {/* Divider (desktop only) */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+          <div className={sectionHero.divider}>
             <div className="h-full w-px bg-grey-300" />
           </div>
 
@@ -88,33 +78,33 @@ export function InsurancePage() {
                 flex-col
                 items-center
                 text-center
-                ${LOGO_SHIFT_DESKTOP}
+                ${sectionHero.compact.logoShiftDesktop}
               `}
             >
               <img
                 src="/images/sectionhero.png"
                 alt="Shoonya Insurance Brokers"
                 className={`
-                  ${LOGO_W_MOBILE}
-                  md:${LOGO_W_DESKTOP}
-                  ${LOGO_MAX_W}
+                  ${sectionHero.logoMobile}
+                  md:${sectionHero.compact.logoDesktop}
+                  ${sectionHero.logoMax}
                   h-auto
                   object-contain
                 `}
               />
 
-              <div className={`${LOGO_TEXT_OVERLAP} space-y-1`}>
-                <p className="text-sm text-grey-600 tracking-wide">
+              <div className={sectionHero.descriptorWrap}>
+                <p className={sectionHero.descriptorText}>
                   Claim Assistance · Customised Insurance
                 </p>
-                <p className="text-sm text-grey-600 tracking-wide">
+                <p className={sectionHero.descriptorText}>
                   A Safer and Greener Future
                 </p>
               </div>
             </div>
 
             {/* ===== RIGHT (CONTENT) ===== */}
-            <div className="flex flex-col items-center text-center space-y-5">
+            <div className={sectionHero.compact.rightColumn}>
               <h1 className={HERO_TITLE}>Insurance</h1>
 
               <p
@@ -147,7 +137,6 @@ export function InsurancePage() {
         </div>
       </section>
 
-      <Divider />
 
       {/* ================= INDIVIDUAL ================= */}
       <Category
@@ -156,14 +145,13 @@ export function InsurancePage() {
       >
         <Grid>
           <PolicyItem name="Health Insurance" description="Comprehensive medical coverage for you and your family, including hospitalization, surgeries, and preventive care." href="#health-insurance" />
-          <PolicyItem name="Personal Accident" description="Financial protection against accidental injuries, disability, and death for you and your family." href="#personal-accident" />
+          <PolicyItem name="Personal Accident" description="Financial protection against accidental injuries, disability, and death for you and your family." href="#personal-accident-insurance" />
           <PolicyItem name="Travel Insurance" description="Coverage for medical emergencies, trip cancellations, lost baggage, and more while traveling." href="#travel-insurance" />
           <PolicyItem name="Motor Insurance" description="Comprehensive or third-party coverage for your car, bike, or commercial vehicle." href="#motor-insurance" />
           <PolicyItem name="Home Insurance" description="Protect your home and belongings against fire, theft, natural disasters, and more." href="#home-insurance" />
         </Grid>
       </Category>
 
-      <Divider />
 
       {/* ================= BUSINESS ================= */}
       <Category
@@ -171,20 +159,19 @@ export function InsurancePage() {
         description="Safeguard your business operations, property, and people with tailored commercial insurance solutions."
       >
         <Grid>
-          <PolicyItem name="Office Package Policy" description="All-in-one coverage for your office premises, equipment, and business operations." href="#office-package" />
+          <PolicyItem name="Office Package Policy" description="All-in-one coverage for your office premises, equipment, and business operations." href="#office-package-policy" />
           <PolicyItem name="Group Health Insurance" description="Affordable health coverage for your employees, ensuring their well-being and your peace of mind." href="#group-health-insurance" />
           <PolicyItem name="Shopkeeper Insurance" description="Comprehensive protection for retail businesses against fire, theft, and liability." href="#shopkeeper-insurance" />
           <PolicyItem name="Property Insurance" description="Coverage for commercial properties against fire, natural disasters, and structural damage." href="#property-insurance" />
           <PolicyItem name="Fire Insurance" description="Protect your business assets and inventory from fire-related losses." href="#fire-insurance" />
           <PolicyItem name="Burglary Insurance" description="Financial protection against theft, break-ins, and burglary-related damages." href="#burglary-insurance" />
-          <PolicyItem name="Workmen Compensation" description="Mandatory coverage for employee injuries and accidents occurring during work." href="#workmen-compensation" />
-          <PolicyItem name="Employee Fidelity" description="Protection against financial losses due to employee fraud or dishonesty." href="#employee-fidelity" />
-          <PolicyItem name="Professional Indemnity" description="Coverage for legal liabilities arising from professional services and advice." href="#professional-indemnity" />
+          <PolicyItem name="Workmen Compensation" description="Mandatory coverage for employee injuries and accidents occurring during work." href="#workmen-compensation-insurance" />
+          <PolicyItem name="Employee Fidelity" description="Protection against financial losses due to employee fraud or dishonesty." href="#employee-fidelity-insurance" />
+          <PolicyItem name="Professional Indemnity" description="Coverage for legal liabilities arising from professional services and advice." href="#professional-indemnity-insurance" />
           <PolicyItem name="Liability Insurance" description="Protection against third-party claims for bodily injury or property damage." href="#liability-insurance" />
         </Grid>
       </Category>
 
-      <Divider />
 
       {/* ================= INDUSTRIAL ================= */}
       <Category
@@ -194,15 +181,14 @@ export function InsurancePage() {
         <Grid>
           <PolicyItem name="Engineering Insurance" description="Comprehensive coverage for machinery, equipment, and engineering projects." href="#engineering-insurance" />
           <PolicyItem name="Machinery Breakdown" description="Protection against unexpected machinery failures and repair costs." href="#machinery-breakdown" />
-          <PolicyItem name="Contractors All Risk" description="Complete coverage for construction projects from start to finish." href="#contractors-all-risk" />
-          <PolicyItem name="Contractors Plant & Machinery" description="Insurance for construction equipment, tools, and machinery." href="#contractors-plant-machinery" />
-          <PolicyItem name="Erection All Risk" description="Coverage for installation and commissioning of plant and machinery." href="#erection-all-risk" />
-          <PolicyItem name="India All Risk" description="Comprehensive all-risk coverage for industrial installations and projects." href="#india-all-risk" />
-          <PolicyItem name="Industrial Property Insurance" description="Protection for factories, warehouses, and industrial facilities." href="#industrial-property" />
+          <PolicyItem name="Contractors All Risk" description="Complete coverage for construction projects from start to finish." href="#contractors-all-risk-insurance" />
+          <PolicyItem name="Contractors Plant & Machinery" description="Insurance for construction equipment, tools, and machinery." href="#contractors-plant-machinery-insurance" />
+          <PolicyItem name="Erection All Risk" description="Coverage for installation and commissioning of plant and machinery." href="#erection-all-risk-insurance" />
+          <PolicyItem name="India All Risk" description="Comprehensive all-risk coverage for industrial installations and projects." href="#india-all-risk-insurance" />
+          <PolicyItem name="Industrial Property Insurance" description="Protection for factories, warehouses, and industrial facilities." href="#industrial-property-insurance" />
         </Grid>
       </Category>
 
-      <Divider />
 
       {/* ================= SPECIALISED ================= */}
       <Category
@@ -210,7 +196,7 @@ export function InsurancePage() {
         description="Unique insurance solutions for modern business risks and financial protection."
       >
         <Grid>
-          <PolicyItem name="Marine Insurance" description="Coverage for goods in transit by sea, air, or land, including cargo and hull insurance." href="#marine-insurance" />
+          <PolicyItem name="Marine Insurance" description="Coverage for goods in transit by sea, air, or land, including cargo and hull insurance." href="#marine-cargo-insurance" />
           <PolicyItem name="Cyber Insurance" description="Protection against data breaches, cyber attacks, and digital security incidents." href="#cyber-insurance" />
           <PolicyItem name="Credit Insurance" description="Safeguard your business against non-payment of trade debts and credit risks." href="#credit-insurance" />
           <PolicyItem name="Money Insurance" description="Coverage for cash in transit, safe, and counter against theft or robbery." href="#money-insurance" />
@@ -234,10 +220,10 @@ function Category({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`max-w-7xl mx-auto px-6 ${SECTION_Y}`}>
+    <section className={`max-w-7xl mx-auto px-6 ${SECTION_Y} ${font("contentScale")}`}>
       <div className="text-center mb-14">
-        <h2>{title}</h2>
-        <p className="text-grey-600 mt-3 max-w-3xl mx-auto">
+        <h2 className={font("sectionTitle")}>{title}</h2>
+        <p className={`mt-3 max-w-3xl mx-auto ${font("bodyMuted")}`}>
           {description}
         </p>
       </div>
@@ -251,13 +237,13 @@ function Grid({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="
+        max-w-6xl
+        mx-auto
         grid
         grid-cols-1
         md:grid-cols-2
         lg:grid-cols-3
-        gap-x-12
-        gap-y-16
-        justify-items-center
+        gap-6
       "
     >
       {children}

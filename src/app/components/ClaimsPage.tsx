@@ -12,25 +12,17 @@ import {
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
+import { font } from "../lib/typography";
+import { sectionHero } from "../lib/sectionHero";
 
 /* ================= TUNING ================= */
 
 const SECTION_Y = "py-20";
 
-/* HERO — SAFE ON ALL DEVICES */
-const HERO_MIN_H = "min-h-auto md:min-h-[80vh]";
-
-/* Logo */
-const LOGO_W_DESKTOP = "w-[340px]";
-const LOGO_W_MOBILE = "w-full";
-const LOGO_MAX_W = "max-w-[520px]";
-const LOGO_TEXT_OVERLAP = "-mt-20";
-const LOGO_SHIFT_DESKTOP = "md:-mt-16";
-
 /* Text */
-const HERO_TITLE = "text-5xl";
-const HERO_SUB = "text-sm";
-const HERO_SUPPORT = "text-base";
+const HERO_TITLE = sectionHero.title;
+const HERO_SUB = sectionHero.kicker;
+const HERO_SUPPORT = sectionHero.support;
 
 /* Info visuals */
 const ICON_CIRCLE = "w-12 h-12 shrink-0";
@@ -49,18 +41,17 @@ export function ClaimsPage() {
       {/* ================= HERO ================= */}
       <section
         className={`
-          ${HERO_MIN_H}
+          ${sectionHero.compact.minHeight}
           flex
           items-start md:items-center
           justify-center
           px-5
-          pt-24 pb-16
-          md:py-20
+          ${sectionHero.compact.sectionPadding}
         `}
       >
         <div className="relative w-full max-w-7xl mx-auto">
           {/* Divider */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2">
+          <div className={sectionHero.divider}>
             <div className="h-full w-px bg-grey-300" />
           </div>
 
@@ -72,33 +63,33 @@ export function ClaimsPage() {
                 flex-col
                 items-center
                 text-center
-                ${LOGO_SHIFT_DESKTOP}
+                ${sectionHero.compact.logoShiftDesktop}
               `}
             >
               <img
                 src="/images/sectionhero.png"
                 alt="Shoonya Insurance Brokers"
                 className={`
-                  ${LOGO_W_MOBILE}
-                  md:${LOGO_W_DESKTOP}
-                  ${LOGO_MAX_W}
+                  ${sectionHero.logoMobile}
+                  md:${sectionHero.compact.logoDesktop}
+                  ${sectionHero.logoMax}
                   h-auto
                   object-contain
                 `}
               />
 
-              <div className={`${LOGO_TEXT_OVERLAP} space-y-1`}>
-                <p className="text-sm text-grey-600 tracking-wide">
+              <div className={sectionHero.descriptorWrap}>
+                <p className={sectionHero.descriptorText}>
                   Claim Assistance · Customised Insurance
                 </p>
-                <p className="text-sm text-grey-600 tracking-wide">
+                <p className={sectionHero.descriptorText}>
                   A Safer and Greener Future
                 </p>
               </div>
             </div>
 
             {/* RIGHT */}
-            <div className="flex flex-col items-center text-center space-y-5">
+            <div className={sectionHero.compact.rightColumn}>
               <h1 className={HERO_TITLE}>Claims Support</h1>
 
               <p className={`${HERO_SUB} tracking-wide text-grey-600 uppercase`}>
@@ -119,7 +110,7 @@ export function ClaimsPage() {
 
       {/* ================= INFO SPLIT ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 ${font("contentScale")}`}>
           {/* IF CLAIM IS REJECTED */}
           <div className="space-y-4">
             <h2>If Your Claim Is Rejected</h2>
@@ -180,7 +171,7 @@ export function ClaimsPage() {
                   </a>
                 </div>
 
-                <p className="text-grey-600 text-sm">We’re here to help.</p>
+                <p className={font("bodyMuted")}>We’re here to help.</p>
               </div>
             </div>
           </div>
@@ -189,14 +180,14 @@ export function ClaimsPage() {
 
       {/* ================= CLAIMS JOURNEY ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
-        <div className="max-w-7xl mx-auto text-center mb-14">
+        <div className={`max-w-7xl mx-auto text-center mb-14 ${font("contentScale")}`}>
           <h2>The Claims Journey</h2>
-          <p className="mt-3 text-grey-600">
+          <p className={`mt-3 ${font("bodyMuted")}`}>
             Step by step, with you throughout.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className={`max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center ${font("contentScale")}`}>
           <JourneyCard title="Claim Intimation" icon={<FileText />} text="Inform us about the incident. We guide you through the first steps." />
           <JourneyCard title="Surveyor Appointment" icon={<ClipboardCheck />} text="A licensed surveyor assesses the loss. We stay involved throughout." />
           <JourneyCard title="Document Submission" icon={<Users />} text="We help you compile and submit documents without stress." />
@@ -230,10 +221,10 @@ function JourneyCard({
     >
       <div className="flex items-center gap-3">
         <div className="text-primary">{icon}</div>
-        <h4>{title}</h4>
+        <h4 className={font("cardHeading")}>{title}</h4>
       </div>
 
-      <p className="text-grey-600 text-sm leading-relaxed">{text}</p>
+      <p className={font("bodyMuted")}>{text}</p>
     </div>
   );
 }
