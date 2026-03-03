@@ -9,8 +9,10 @@ export function CTAButtons({
   variant = "default",
   className = "",
 }: CTAButtonsProps) {
+  const calendlyUrl = "https://calendly.com/shoonya-info/30min";
+
   const handleScheduleCall = () => {
-    window.location.href = "tel:+919419286666";
+    window.open(calendlyUrl, "_blank", "noopener,noreferrer");
   };
 
   const handleWhatsApp = () => {
