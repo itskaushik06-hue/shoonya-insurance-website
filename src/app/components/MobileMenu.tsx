@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 interface MobileMenuProps {
@@ -8,113 +8,108 @@ interface MobileMenuProps {
 export function MobileMenu({ currentPage = "home" }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
+  const baseLinkClass =
+    "block rounded-xl px-4 py-3 text-[1.05rem] sm:text-lg font-medium leading-tight transition-colors";
+
   return (
     <div className="md:hidden">
-      {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 text-grey-700 hover:text-primary transition-colors"
+        className="p-2.5 text-grey-700 hover:text-primary transition-colors"
         aria-label="Open menu"
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu-panel"
       >
-        <Menu className="w-6 h-6" />
+        <Menu className="w-7 h-7" />
       </button>
 
-      {/* Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50">
-          {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/10 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Menu Panel */}
           <div
+            id="mobile-menu-panel"
             className="
               absolute
-              top-20
-              left-4
-              right-4
+              top-[4.5rem]
+              right-3
+              w-[min(92vw,22rem)]
+              max-h-[calc(100vh-5.5rem)]
+              overflow-y-auto
               bg-white
-              rounded-xl
-              shadow-lg
+              rounded-2xl
+              shadow-xl
               border
               border-grey-200
-              p-6
+              p-4
+              sm:p-5
             "
           >
-            {/* Header */}
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-sm font-medium text-grey-500">
-                Navigation
-              </span>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 p-1.5 text-grey-600 hover:text-primary transition-colors"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1 text-grey-600 hover:text-primary transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Nav Links */}
-            <nav className="flex flex-col space-y-4">
-              {/* Home */}
+            <nav className="mt-8 flex flex-col gap-1.5">
               <a
                 href="#hero-desktop"
                 onClick={() => setIsOpen(false)}
                 className={`
-                  text-base
-                  py-2
-                  transition-colors
+                  ${baseLinkClass}
                   ${
                     currentPage === "home"
-                      ? "text-primary font-medium"
-                      : "text-grey-700 hover:text-primary"
+                      ? "bg-primary/10 text-primary"
+                      : "text-grey-700 hover:bg-grey-100 hover:text-primary"
                   }
                 `}
               >
                 Home
               </a>
 
-              {/* Solutions */}
               <a
                 href="#solutions"
                 onClick={() => setIsOpen(false)}
                 className={`
-                  text-base
-                  py-2
-                  transition-colors
+                  ${baseLinkClass}
                   ${
                     currentPage === "solutions"
-                      ? "text-primary font-medium"
-                      : "text-grey-700 hover:text-primary"
+                      ? "bg-primary/10 text-primary"
+                      : "text-grey-700 hover:bg-grey-100 hover:text-primary"
                   }
                 `}
               >
                 Solutions
               </a>
 
-              {/* Claims with Green Dot */}
               <a
                 href="#claims"
                 onClick={() => setIsOpen(false)}
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  text-base
-                  py-2
-                  text-grey-700
-                  hover:text-primary
-                  transition-colors
-                "
+                className={`
+                  ${baseLinkClass}
+                  ${
+                    currentPage === "claims"
+                      ? "bg-primary/10 text-primary"
+                      : "text-grey-700 hover:bg-grey-100 hover:text-primary"
+                  }
+                `}
               >
-                <span
-                  className="w-2.5 h-2.5 rounded-full"
-                  style={{ backgroundColor: "#42599c" }}
-                />
                 Claims
               </a>
             </nav>
