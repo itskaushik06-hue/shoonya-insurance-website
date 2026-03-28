@@ -34,7 +34,7 @@ export function AboutSection() {
         <div className="flex justify-center lg:justify-center">
           <img
             src="/images/about.png"
-            alt="Shoonya About"
+            alt="Shoonya Insurance Brokers team illustration representing long-term insurance guidance"
             className="w-full max-w-[420px] lg:max-w-[420px] h-auto object-contain"
           />
         </div>

@@ -50,7 +50,7 @@ export function HeroDesktop() {
       >
         <img
           src="/images/hero.png"
-          alt="Shoonya Insurance Brokers"
+          alt="Shoonya Insurance Brokers logo and brand mark"
           className={`
             ${LOGO_BASE}
             ${LOGO_XL}

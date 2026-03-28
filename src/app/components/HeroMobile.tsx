@@ -35,7 +35,7 @@ export function HeroMobile() {
         {/* LOGO */}
         <img
           src="/images/heromobile.png"
-          alt="Shoonya Insurance Brokers"
+          alt="Shoonya Insurance Brokers logo and brand mark"
           className={`
             ${LOGO_WIDTH}
             ${LOGO_MAX_W}

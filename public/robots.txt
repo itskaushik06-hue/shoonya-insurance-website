@@ -1,0 +1,16 @@
+# robots.txt for Shoonya Insurance Brokers
+# Last Updated: March 29, 2026
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /test/
+Disallow: /staging/
+
+# Block bad bots (optional)
+User-agent: MJ12bot
+Disallow: /
+
+Sitemap: https://shoonya.care/sitemap.xml

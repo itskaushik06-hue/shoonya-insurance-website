@@ -96,7 +96,7 @@ export function Header({ currentPage = "home" }: HeaderProps) {
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-10 ml-auto">
               <a
-                href="#claims"
+                href="/claims"
                 className={`relative flex items-center ${base} ${
                   currentPage === "claims" ? active : inactive
                 }`}
@@ -108,7 +108,7 @@ export function Header({ currentPage = "home" }: HeaderProps) {
               </a>
 
               <a
-                href="#solutions"
+                href="/solutions"
                 className={`${base} ${
                   currentPage === "solutions" ? active : inactive
                 }`}
@@ -117,7 +117,7 @@ export function Header({ currentPage = "home" }: HeaderProps) {
               </a>
 
               <a
-                href="#hero-desktop"
+                href="/#hero"
                 className={`${base} ${
                   currentPage === "home" ? active : inactive
                 }`}

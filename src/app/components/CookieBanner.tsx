@@ -35,7 +35,7 @@ export function CookieBanner() {
             By continuing to use this website, you agree to our use of cookies.
             You can learn more in our{" "}
             <a
-              href="#cookie-policy"
+              href="/cookie-policy"
               className="underline hover:text-primary transition-colors"
             >
               Cookie Policy

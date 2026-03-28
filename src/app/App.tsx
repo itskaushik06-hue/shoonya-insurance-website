@@ -51,21 +51,58 @@ import { CookiePolicyPage } from "./components/CookiePolicyPage";
 /* ================= COOKIE BANNER ================= */
 
 import { CookieBanner } from "./components/CookieBanner";
+import { SEO } from "./components/SEO";
+import { getPageSeo } from "./lib/seo";
+
+function getRouteFromLocation() {
+  const pathname = window.location.pathname.replace(/^\/+|\/+$/g, "");
+
+  if (pathname.startsWith("articles/")) {
+    return `article/${pathname.replace("articles/", "")}`;
+  }
+
+  if (pathname) {
+    return pathname;
+  }
+
+  const hash = window.location.hash.replace("#", "");
+
+  if (hash) {
+    return hash;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const article = params.get("article");
+  const page = params.get("page");
+
+  if (article) {
+    return `article/${article}`;
+  }
+
+  if (page) {
+    return page;
+  }
+
+  return "home";
+}
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState(getRouteFromLocation);
 
   useEffect(() => {
     const handleNavigation = () => {
-      const hash = window.location.hash.replace("#", "");
-      setCurrentPage(hash || "home");
+      setCurrentPage(getRouteFromLocation());
       window.scrollTo(0, 0);
     };
 
     handleNavigation();
     window.addEventListener("hashchange", handleNavigation);
+    window.addEventListener("popstate", handleNavigation);
 
-    return () => window.removeEventListener("hashchange", handleNavigation);
+    return () => {
+      window.removeEventListener("hashchange", handleNavigation);
+      window.removeEventListener("popstate", handleNavigation);
+    };
   }, []);
 
   const renderPage = () => {
@@ -202,6 +239,9 @@ export default function App() {
 
   return (
     <>
+      {!currentPage.startsWith("article/") ? (
+        <SEO {...getPageSeo(currentPage)} />
+      ) : null}
       {renderPage()}
       <CookieBanner />
     </>

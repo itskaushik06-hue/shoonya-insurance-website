@@ -4,9 +4,9 @@ import { HeroMobile } from "./HeroMobile";
 
 export function Hero() {
   return (
-    <>
+    <div id="hero">
       <HeroDesktop />
       <HeroMobile />
-    </>
+    </div>
   );
 }

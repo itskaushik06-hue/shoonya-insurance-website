@@ -3,10 +3,24 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
 import { articles } from "../../data/articles";
+import { font } from "../lib/typography";
+import { SEO } from "./SEO";
+import {
+  buildPageUrl,
+  clampDescription,
+  SITE_NAME,
+  SITE_URL,
+} from "../lib/seo";
 
 export function ArticleDetailPage() {
+  const pathname = window.location.pathname.replace(/^\/+|\/+$/g, "");
   const hash = window.location.hash.replace("#", "");
-  const slug = hash.replace("article/", "");
+  const params = new URLSearchParams(window.location.search);
+  const slug = pathname.startsWith("articles/")
+    ? pathname.replace("articles/", "")
+    : hash.startsWith("article/")
+    ? hash.replace("article/", "")
+    : params.get("article") || "";
   const article = articles.find((a) => a.slug === slug);
 
   const [progress, setProgress] = useState(0);
@@ -28,9 +42,21 @@ export function ArticleDetailPage() {
   if (!article) {
     return (
       <div className="min-h-screen bg-white">
+        <SEO
+          title={`Article Not Found | ${SITE_NAME}`}
+          description="The requested Shoonya article could not be found."
+          canonical={buildPageUrl("articles")}
+          robots="noindex, nofollow"
+        />
         <Header />
         <div className="flex items-center justify-center h-[60vh]">
-          <p className="text-grey-600">Article not found.</p>
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-grey-800 mb-2">Article Not Found</h1>
+            <p className="text-grey-600 mb-6">The article you're looking for doesn't exist or has been removed.</p>
+            <a href="/articles" className="inline-block px-6 py-2 bg-primary text-white rounded-lg hover:opacity-90">
+              View All Articles
+            </a>
+          </div>
         </div>
         <Footer />
       </div>
@@ -38,9 +64,42 @@ export function ArticleDetailPage() {
   }
 
   const related = articles.filter((a) => a.slug !== article.slug);
+  const articleUrl = buildPageUrl(undefined, article.slug);
+  const articleDescription = clampDescription(article.description);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: articleDescription,
+    image: `${SITE_URL}${article.image}`,
+    datePublished: article.date,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon.png`,
+      },
+    },
+    mainEntityOfPage: articleUrl,
+    keywords: article.keywords.join(", "),
+  };
 
   return (
     <div className="bg-white page-transition">
+      <SEO
+        title={`${article.title} | ${SITE_NAME}`}
+        description={articleDescription}
+        canonical={articleUrl}
+        keywords={article.keywords}
+        ogType="article"
+        ogImage={`${SITE_URL}${article.image}`}
+        structuredData={articleSchema}
+      />
       <Header />
 
       {/* Reading Progress Bar */}
@@ -59,7 +118,7 @@ export function ArticleDetailPage() {
           <div className="rounded-2xl overflow-hidden mb-6">
             <img
               src={article.image}
-              alt={article.title}
+              alt={article.imageAlt}
               className="w-full h-[260px] md:h-[320px] object-cover"
             />
           </div>
@@ -69,15 +128,38 @@ export function ArticleDetailPage() {
             {article.category} · {article.date} · {article.readTime}
           </div>
 
-          {/* Title */}
-          <h1 className="text-3xl md:text-4xl leading-tight mb-4">
+          {/* Title - SEO Optimized */}
+          <h1 className="text-3xl md:text-4xl leading-tight mb-4 font-bold text-grey-900">
             {article.title}
           </h1>
 
-          {/* Description */}
-          <p className="text-lg text-grey-600 leading-relaxed">
+          {/* Description - SEO Meta Description */}
+          <p className="text-lg text-grey-600 leading-relaxed font-medium">
             {article.description}
           </p>
+          
+          {/* CTA to Related Service */}
+          {article.category === "Cyber Insurance" && (
+            <div className="mt-6 p-4 bg-blue-50 border-l-4 border-primary rounded">
+              <p className="text-sm text-grey-700">
+                <strong>Interested in cyber insurance?</strong> <a href="/cyber-insurance" className="text-primary hover:underline">Learn about our cyber insurance solutions</a> and get expert guidance tailored to your business.
+              </p>
+            </div>
+          )}
+          {article.category === "Liability Insurance" && (
+            <div className="mt-6 p-4 bg-blue-50 border-l-4 border-primary rounded">
+              <p className="text-sm text-grey-700">
+                <strong>Need liability coverage?</strong> <a href="/liability-insurance" className="text-primary hover:underline">Explore our liability insurance options</a> designed for your business.
+              </p>
+            </div>
+          )}
+          {article.category === "Health Insurance" && (
+            <div className="mt-6 p-4 bg-blue-50 border-l-4 border-primary rounded">
+              <p className="text-sm text-grey-700">
+                <strong>Looking for health coverage?</strong> <a href="/health-insurance" className="text-primary hover:underline">Check our health insurance plans</a> with comprehensive benefits.
+              </p>
+            </div>
+          )}
 
         </div>
       </section>
@@ -139,17 +221,17 @@ export function ArticleDetailPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
 
             {related.map((item) => (
-              <a
-                key={item.slug}
-                href={`#article/${item.slug}`}
-                className="w-full max-w-[340px]"
-              >
+                <a
+                  key={item.slug}
+                  href={`/articles/${item.slug}`}
+                  className="w-full max-w-[340px]"
+                >
                 <div className="bg-white border border-grey-200 rounded-2xl overflow-hidden hover:shadow-md transition">
 
                   <div className="h-[200px] overflow-hidden">
                     <img
                       src={item.image}
-                      alt={item.title}
+                      alt={item.imageAlt}
                       className="w-full h-full object-cover"
                     />
                   </div>

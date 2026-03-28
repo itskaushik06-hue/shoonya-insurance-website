@@ -78,7 +78,19 @@ export function ArticlesPage() {
               </h1>
 
               <p className={sectionHero.kicker}>
-                Insights and Analysis on Insurance Trends
+                Insights on business insurance, cyber risk, liability, and coverage decisions in India
+              </p>
+
+              <p className={`max-w-xl ${font("bodyMuted")}`}>
+                Explore practical reads on{" "}
+                <a className="text-primary hover:underline" href="/cyber-insurance">
+                  cyber insurance
+                </a>
+                ,{" "}
+                <a className="text-primary hover:underline" href="/liability-insurance">
+                  liability insurance
+                </a>
+                , and broader risk trends shaping Indian businesses.
               </p>
             </div>
 
@@ -93,7 +105,7 @@ export function ArticlesPage() {
           {articles.map((article) => (
             <a
               key={article.slug}
-              href={`#article/${article.slug}`}
+              href={`/articles/${article.slug}`}
               className={CARD_WIDTH}
             >
               <div
@@ -112,7 +124,7 @@ export function ArticlesPage() {
                 <div className={`${IMAGE_HEIGHT} overflow-hidden`}>
                   <img
                     src={article.image}
-                    alt={article.title}
+                    alt={article.imageAlt}
                     className="w-full h-full object-cover"
                   />
                 </div>

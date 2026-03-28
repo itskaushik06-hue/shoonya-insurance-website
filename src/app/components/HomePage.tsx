@@ -40,7 +40,8 @@ export function HomePage() {
         <div className="max-w-5xl mx-auto text-center mb-16">
           <h2 className="text-2xl">What We Do</h2>
           <p className={`mt-4 ${font("bodyMuted")}`}>
-            We simplify insurance through a consultative approach.
+            Shoonya is an insurance broker in India focused on business insurance,
+            cyber insurance, liability coverage, and dependable claims support.
           </p>
         </div>
 
@@ -85,6 +86,36 @@ export function HomePage() {
             including cyber insurance, data protection insurance, credit insurance, liability
             insurance, marine insurance, customs bond insurance, and customs duty insurance to
             safeguard evolving commercial and trade exposures.
+          </p>
+          <p className={font("bodyMuted")}>
+            Popular coverage areas include{" "}
+            <a className="text-primary hover:underline" href="/cyber-insurance">
+              cyber insurance for companies
+            </a>
+            ,{" "}
+            <a className="text-primary hover:underline" href="/liability-insurance">
+              liability insurance for businesses and startups
+            </a>
+            ,{" "}
+            <a className="text-primary hover:underline" href="/group-health-insurance">
+              group health insurance for teams
+            </a>
+            ,{" "}
+            <a className="text-primary hover:underline" href="/industrial-property-insurance">
+              industrial property insurance
+            </a>
+            , and{" "}
+            <a className="text-primary hover:underline" href="/marine-cargo-insurance">
+              marine cargo insurance
+            </a>
+            .
+          </p>
+          <p className={font("bodyMuted")}>
+            For deeper guidance, browse our{" "}
+            <a className="text-primary hover:underline" href="/articles">
+              insurance articles and risk insights
+            </a>
+            {" "}covering cyber risk, underwriting trends, and changing business exposures in India.
           </p>
         </div>
 
@@ -214,9 +245,7 @@ function Solution({ icon, label, text }: any) {
   return (
     <div className="h-full border border-grey-200 rounded-xl bg-grey-50 p-6 space-y-4 text-left">
       <div className="text-primary">{icon}</div>
-      <h4 className="text-lg hover:text-primary transition-colors cursor-pointer">
-        {label}
-      </h4>
+      <h3 className="text-lg hover:text-primary transition-colors cursor-pointer">{label}</h3>
       <p className={font("bodyMuted")}>{text}</p>
     </div>
   );

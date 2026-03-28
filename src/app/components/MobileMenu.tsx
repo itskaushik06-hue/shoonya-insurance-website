@@ -69,7 +69,7 @@ export function MobileMenu({ currentPage = "home" }: MobileMenuProps) {
 
             <nav className="mt-8 flex flex-col gap-1.5">
               <a
-                href="#hero-desktop"
+                href="/#hero"
                 onClick={() => setIsOpen(false)}
                 className={`
                   ${baseLinkClass}
@@ -84,7 +84,7 @@ export function MobileMenu({ currentPage = "home" }: MobileMenuProps) {
               </a>
 
               <a
-                href="#solutions"
+                href="/solutions"
                 onClick={() => setIsOpen(false)}
                 className={`
                   ${baseLinkClass}
@@ -99,7 +99,7 @@ export function MobileMenu({ currentPage = "home" }: MobileMenuProps) {
               </a>
 
               <a
-                href="#claims"
+                href="/claims"
                 onClick={() => setIsOpen(false)}
                 className={`
                   ${baseLinkClass}

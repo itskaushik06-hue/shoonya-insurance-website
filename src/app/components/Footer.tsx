@@ -16,12 +16,12 @@ export function Footer() {
 
         {/* LINKS */}
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-xs">
-          <a href="#csr" className="hover:text-primary transition-colors">CSR</a>
-          <a href="#articles" className="hover:text-primary transition-colors">Articles</a>
-          <a href="#privacy-policy" className="hover:text-primary transition-colors">Privacy Notice</a>
-          <a href="#terms-and-conditions" className="hover:text-primary transition-colors">Terms of Use</a>
-          <a href="#disclaimer" className="hover:text-primary transition-colors">Transparency &amp; Disclosure</a>
-          <a href="#cookie-policy" className="hover:text-primary transition-colors">Cookie Notice</a>
+          <a href="/csr" className="hover:text-primary transition-colors">CSR</a>
+          <a href="/articles" className="hover:text-primary transition-colors">Articles</a>
+          <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Notice</a>
+          <a href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms of Use</a>
+          <a href="/disclaimer" className="hover:text-primary transition-colors">Transparency &amp; Disclosure</a>
+          <a href="/cookie-policy" className="hover:text-primary transition-colors">Cookie Notice</a>
         </div>
 
         {/* COMPANY INFO */}

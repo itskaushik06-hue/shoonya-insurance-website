@@ -99,7 +99,7 @@ export function SolutionsPage() {
                   max-w-xl
                 `}
               >
-                Thoughtful guidance, built around your{" "}
+                Thoughtful risk advisory and insurance planning in India, built around your{" "}
                 <span className="font-medium text-grey-800">
                   real risks
                 </span>{" "}
@@ -115,18 +115,18 @@ export function SolutionsPage() {
       {/* ================= SOLUTIONS ================= */}
       <section className={`px-6 ${SECTION_Y}`}>
         <div className={`max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 ${font("contentScale")}`}>
-          <SolutionCard
-            icon={<ShieldCheck />}
-            title="Risk"
-            text="Identify, assess, and manage risks that could impact your business or personal life."
-            href="#solutions/risk"
-          />
+            <SolutionCard
+              icon={<ShieldCheck />}
+              title="Risk"
+              text="Identify, assess, and manage business and operational risks before they become expensive insurance problems."
+              href="/solutions/risk"
+            />
 
           <SolutionCard
             icon={<Umbrella />}
             title="Insurance"
-            text="Insurance selected and structured around your responsibilities, never generic."
-            href="#solutions/insurance"
+            text="Explore business insurance, cyber insurance, liability insurance, employee coverage, and industrial protection structured around your real exposures."
+            href="/solutions/insurance"
           />
         </div>
       </section>
