@@ -65,14 +65,16 @@ export function ArticleDetailPage() {
 
   const related = articles.filter((a) => a.slug !== article.slug);
   const articleUrl = buildPageUrl(undefined, article.slug);
-  const articleDescription = clampDescription(article.description);
+  const articleDescription = clampDescription(
+    article.metaDescription || article.description,
+  );
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: articleDescription,
     image: `${SITE_URL}${article.image}`,
-    datePublished: article.date,
+    datePublished: article.publishedAt,
     author: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -92,7 +94,7 @@ export function ArticleDetailPage() {
   return (
     <div className="bg-white page-transition">
       <SEO
-        title={`${article.title} | ${SITE_NAME}`}
+        title={article.metaTitle || `${article.title} | ${SITE_NAME}`}
         description={articleDescription}
         canonical={articleUrl}
         keywords={article.keywords}
@@ -137,6 +139,25 @@ export function ArticleDetailPage() {
           <p className="text-lg text-grey-600 leading-relaxed font-medium">
             {article.description}
           </p>
+
+          {article.relatedLinks?.length ? (
+            <div className="mt-6 rounded-2xl border border-grey-200 bg-grey-50 p-5">
+              <p className="text-sm font-semibold text-grey-800 mb-3">
+                Relevant pages
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {article.relatedLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-primary hover:underline"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
           
           {/* CTA to Related Service */}
           {article.category === "Cyber Insurance" && (
@@ -168,22 +189,51 @@ export function ArticleDetailPage() {
       <section className="px-6 pb-20">
         <div className="max-w-3xl mx-auto space-y-8 text-grey-700 text-lg leading-relaxed">
 
-          {article.content.map((paragraph, index) => {
+          {article.sections?.length
+            ? article.sections.map((section, index) => (
+                <section key={section.heading} className="space-y-4">
+                  <h2 className="text-2xl font-semibold text-grey-900">
+                    {section.heading}
+                  </h2>
 
-            // First paragraph drop cap
-            if (index === 0) {
-              return (
-                <p key={index}>
-                  <span className="text-4xl font-semibold float-left mr-2 leading-none">
-                    {paragraph.charAt(0)}
-                  </span>
-                  {paragraph.slice(1)}
-                </p>
-              );
-            }
+                  {section.paragraphs?.map((paragraph, paragraphIndex) => {
+                    if (index === 0 && paragraphIndex === 0) {
+                      return (
+                        <p key={paragraph}>
+                          <span className="text-4xl font-semibold float-left mr-2 leading-none">
+                            {paragraph.charAt(0)}
+                          </span>
+                          {paragraph.slice(1)}
+                        </p>
+                      );
+                    }
 
-            return <p key={index}>{paragraph}</p>;
-          })}
+                    return <p key={paragraph}>{paragraph}</p>;
+                  })}
+
+                  {section.bullets?.length ? (
+                    <ul className="list-disc pl-6 space-y-2">
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
+              ))
+            : article.content.map((paragraph, index) => {
+                if (index === 0) {
+                  return (
+                    <p key={index}>
+                      <span className="text-4xl font-semibold float-left mr-2 leading-none">
+                        {paragraph.charAt(0)}
+                      </span>
+                      {paragraph.slice(1)}
+                    </p>
+                  );
+                }
+
+                return <p key={index}>{paragraph}</p>;
+              })}
 
         </div>
       </section>

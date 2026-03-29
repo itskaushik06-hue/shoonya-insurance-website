@@ -1,23 +1,215 @@
+export interface ArticleSection {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+}
+
+export interface ArticleRelatedLink {
+  label: string;
+  href: string;
+}
+
 export interface Article {
   slug: string;
   title: string;
   description: string;
+  metaTitle?: string;
+  metaDescription?: string;
   date: string;
+  publishedAt: string;
   readTime: string;
   image: string;
   imageAlt: string;
   category: string;
   keywords: string[];
   targetPage?: string;
+  relatedLinks?: ArticleRelatedLink[];
+  sections?: ArticleSection[];
   content: string[];
 }
 
 export const articles: Article[] = [
   {
+    slug: "cyber-insurance-business-india",
+    title:
+      "Cyber Insurance for Businesses in India: What It Covers and Why It Matters",
+    description:
+      "Cyber insurance helps Indian businesses manage data breach, ransomware, liability, and recovery costs when digital incidents disrupt operations.",
+    metaTitle: "Cyber Insurance for Businesses in India | Shoonya",
+    metaDescription:
+      "Learn what cyber insurance covers for Indian businesses, including data breaches, ransomware, cyber liability, and business interruption losses.",
+    date: "March 2026",
+    publishedAt: "2026-03-30",
+    readTime: "6 min read",
+    image: "/images/articles/cyber-risk-sme.jpg",
+    imageAlt:
+      "Cyber insurance illustration representing data breach and ransomware protection for Indian businesses",
+    category: "Cyber Insurance",
+    keywords: [
+      "cyber insurance India",
+      "cyber insurance for companies",
+      "cyber liability insurance India",
+      "business cyber insurance India",
+      "data breach insurance India",
+    ],
+    targetPage: "cyber-insurance",
+    relatedLinks: [
+      { label: "Cyber Insurance Solutions", href: "/cyber-insurance" },
+      { label: "Insurance Solutions", href: "/solutions/insurance" },
+      { label: "Claims Support", href: "/claims" },
+    ],
+    sections: [
+      {
+        heading: "What Is Cyber Insurance?",
+        paragraphs: [
+          "Cyber insurance, also known as cyber liability insurance, is designed to protect businesses from losses caused by cyber incidents. As operations, communication, customer servicing, and data storage increasingly move online, digital risks now affect companies of every size.",
+          "For businesses in India, cyber insurance can provide financial support when an attack, breach, or system outage leads to operational disruption, legal exposure, or recovery costs.",
+        ],
+        bullets: [
+          "Data breaches",
+          "Hacking attacks",
+          "Ransomware incidents",
+          "Business interruption caused by cyber events",
+        ],
+      },
+      {
+        heading: "Why Businesses Need Cyber Insurance",
+        paragraphs: [
+          "Many companies still assume cyber attacks are mainly a problem for large enterprises. In practice, small and medium-sized businesses are often targeted because they may have fewer security controls, smaller IT teams, and less formal incident response planning.",
+          "When a cyber incident affects billing systems, email, cloud tools, or customer databases, the damage can extend well beyond the initial breach. The resulting financial and reputational impact can be difficult to absorb without proper protection.",
+        ],
+        bullets: [
+          "Cyber attacks are becoming more frequent and more expensive",
+          "Data protection failures can create legal and regulatory liabilities",
+          "System downtime can lead to revenue loss and business interruption",
+          "Incident response, investigation, and recovery costs add up quickly",
+        ],
+      },
+      {
+        heading: "What Does Cyber Insurance Cover?",
+        paragraphs: [
+          "The exact scope depends on the policy wording, limits, and endorsements, but most businesses evaluate cyber insurance for a mix of first-party and third-party protection.",
+        ],
+        bullets: [
+          "Data breach response and customer notification costs",
+          "Legal expenses and certain regulatory liabilities",
+          "Business interruption losses caused by cyber incidents",
+          "Cyber extortion and ransomware response costs",
+          "IT forensic investigation and recovery support",
+        ],
+      },
+      {
+        heading: "How Much Coverage Does a Business Need?",
+        paragraphs: [
+          "The right level of cyber insurance depends on how the business operates, what data it handles, and how dependent it is on digital systems. A company running online platforms, storing customer records, or managing vendor integrations will typically need a more structured coverage review.",
+          "A professional assessment helps match policy limits and extensions to actual exposure rather than choosing cover based on guesswork.",
+        ],
+        bullets: [
+          "Size of the business",
+          "Volume and sensitivity of customer data",
+          "Industry type and contractual obligations",
+          "Dependence on digital infrastructure and cloud systems",
+        ],
+      },
+      {
+        heading: "Conclusion",
+        paragraphs: [
+          "As cyber risks continue to evolve, businesses need practical protection that helps them respond, recover, and continue operations with less disruption. Cyber insurance is one of the key tools that supports that resilience.",
+          "If your business handles sensitive data, depends on digital tools, or serves customers online, evaluating cyber risk exposure is a smart first step.",
+        ],
+      },
+    ],
+    content: [],
+  },
+  {
+    slug: "liability-insurance-startups-india",
+    title:
+      "Liability Insurance for Startups in India: Essential Covers for Growing Companies",
+    description:
+      "Liability insurance helps startups in India manage third-party claims, legal costs, and professional risks as they grow operations and client relationships.",
+    metaTitle: "Liability Insurance for Startups in India | Shoonya",
+    metaDescription:
+      "Understand liability insurance for startups in India, including public liability, professional indemnity, and other covers for growing companies.",
+    date: "March 2026",
+    publishedAt: "2026-03-30",
+    readTime: "6 min read",
+    image: "/images/hero3.png",
+    imageAlt:
+      "Shoonya Insurance Brokers visual used for an article about liability insurance for startups in India",
+    category: "Liability Insurance",
+    keywords: [
+      "liability insurance for startups",
+      "liability insurance India",
+      "professional indemnity insurance India",
+      "startup insurance India",
+      "business liability insurance India",
+    ],
+    targetPage: "liability-insurance",
+    relatedLinks: [
+      { label: "Liability Insurance", href: "/liability-insurance" },
+      {
+        label: "Professional Indemnity Insurance",
+        href: "/professional-indemnity-insurance",
+      },
+      { label: "Insurance Solutions", href: "/solutions/insurance" },
+    ],
+    sections: [
+      {
+        heading: "Why Startups Should Think About Liability Insurance Early",
+        paragraphs: [
+          "Startups often focus first on growth, hiring, product development, and customer acquisition. But as soon as a business signs clients, handles data, rents office space, or delivers professional services, liability exposure begins to grow as well.",
+          "One claim from a customer, vendor, visitor, or business partner can lead to legal costs, settlement pressure, and reputational damage. Liability insurance helps founders manage that risk before it becomes disruptive.",
+        ],
+      },
+      {
+        heading: "What Liability Insurance Can Help Protect",
+        paragraphs: [
+          "Liability insurance is not a single policy for every situation. Instead, startups often need to evaluate different liability covers based on how they operate and what obligations they take on.",
+        ],
+        bullets: [
+          "Public liability for third-party bodily injury or property damage claims",
+          "Professional indemnity for service errors, omissions, or advice-related claims",
+          "Product liability where products may cause loss or injury",
+          "Management liability or directors and officers protection for leadership decisions",
+        ],
+      },
+      {
+        heading: "What Affects the Right Liability Cover for a Startup",
+        paragraphs: [
+          "The right policy structure depends on sector, contracts, team size, and the kind of promises the business is making to customers or investors. A SaaS startup, consulting firm, D2C brand, and logistics startup will not have the same liability profile.",
+        ],
+        bullets: [
+          "Industry and operating model",
+          "Nature of products or services sold",
+          "Contractual liability requirements",
+          "Customer data handling and compliance obligations",
+          "Funding stage and board-level exposure",
+        ],
+      },
+      {
+        heading: "How Founders Should Approach Liability Insurance",
+        paragraphs: [
+          "Instead of buying the cheapest policy available, founders should review where a claim is most likely to come from and what the business would struggle to absorb on its own. That usually means reviewing contracts, delivery commitments, vendor relationships, and client expectations together.",
+          "A structured insurance review helps align policy wording, exclusions, and limits with actual operating risk.",
+        ],
+      },
+      {
+        heading: "Conclusion",
+        paragraphs: [
+          "Liability insurance gives startups a more stable base for growth. It helps protect the business when third-party claims, service disputes, or legal costs arise during expansion.",
+          "For founders building client-facing or high-growth businesses, reviewing liability exposure early is often far more efficient than waiting until after a dispute appears.",
+        ],
+      },
+    ],
+    content: [],
+  },
+  {
     slug: "cyber-insurance-protection-guide",
     title: "Understanding Cyber Insurance: Protection in the Digital Age",
-    description: "Learn how cyber insurance protects your business from data breaches, ransomware, and cyber threats. Complete guide to cyber coverage needs and implementation.",
+    description:
+      "Learn how cyber insurance protects your business from data breaches, ransomware, and cyber threats. Complete guide to cyber coverage needs and implementation.",
     date: "March 2026",
+    publishedAt: "2026-03-28",
     readTime: "12 min read",
     image: "/images/articles/cyber-risk-sme.jpg",
     imageAlt:
@@ -43,8 +235,8 @@ export const articles: Article[] = [
       "Choosing the right cyber insurance requires assessing your specific digital risk profile. Consider: What customer data do you hold? What systems support critical operations? What third-party vendors have access to your network? What regulatory frameworks apply to your business? These questions define your coverage needs.",
       "Premium costs vary based on several factors: industry risk profile, employee count, revenue, existing security controls (firewalls, multi-factor authentication, annual security training), claims history, and coverage limits. Organizations that invest in measurable security improvements often negotiate better premium rates.",
       "Implementation steps are straightforward: Conduct a risk assessment identifying key digital assets and vulnerabilities. Determine appropriate coverage limits based on potential loss scenarios. Compare policies from multiple insurers. Review exclusions carefully—not all cyber policies cover all scenarios. Implement recommended security controls to align premium costs with actual risk.",
-      "As cyber threats continue evolving, cyber insurance increasingly serves as a foundational component of operational resilience strategy. The combination of robust internal controls and appropriate external coverage creates multi-layered protection against digital threats that can otherwise threaten business continuity."
-    ]
+      "As cyber threats continue evolving, cyber insurance increasingly serves as a foundational component of operational resilience strategy. The combination of robust internal controls and appropriate external coverage creates multi-layered protection against digital threats that can otherwise threaten business continuity.",
+    ],
   },
   {
     slug: "ai-underwriting-2026",
@@ -52,6 +244,7 @@ export const articles: Article[] = [
     description:
       "Artificial intelligence is transforming how insurers assess risk, detect fraud, and price policies across India.",
     date: "February 2026",
+    publishedAt: "2026-02-20",
     readTime: "9 min read",
     image: "/images/articles/ai-underwriting.jpg",
     imageAlt:
@@ -74,16 +267,16 @@ export const articles: Article[] = [
       "Risk posture is no longer assessed solely through financial statements or physical inspections. Data maturity, cybersecurity hygiene, environmental exposure, and compliance practices now feed directly into underwriting systems.",
       "Organizations that actively improve measurable risk indicators often see tangible benefits in coverage structure and long-term pricing efficiency.",
       "In this landscape, advisory support plays a critical role. Understanding how modern underwriting models interpret your risk profile can influence negotiation leverage, deductible structuring, and policy architecture.",
-      "AI is not replacing human underwriting judgment. Instead, it is augmenting it. The companies that navigate this transition strategically are positioning themselves for more resilient coverage outcomes in an increasingly data-driven insurance ecosystem."
-    ]
+      "AI is not replacing human underwriting judgment. Instead, it is augmenting it. The companies that navigate this transition strategically are positioning themselves for more resilient coverage outcomes in an increasingly data-driven insurance ecosystem.",
+    ],
   },
-
   {
     slug: "climate-risk-india-2026",
     title: "Climate Risk and Its Impact on Insurance Pricing",
     description:
       "Urban flooding, extreme weather patterns, and climate volatility are redefining actuarial assumptions in India.",
     date: "February 2026",
+    publishedAt: "2026-02-14",
     readTime: "10 min read",
     image: "/images/articles/climate-risk-2026.jpg",
     imageAlt:
@@ -108,16 +301,16 @@ export const articles: Article[] = [
       "Resilience planning is no longer purely reputational or regulatory. It is financially consequential.",
       "For policyholders, this means coverage strategy must evolve alongside environmental risk awareness. Static coverage limits may not adequately address dynamic exposure patterns.",
       "Proactive climate risk mapping and structured advisory engagement can materially improve both coverage positioning and premium negotiation outcomes.",
-      "The future of insurance pricing in India is not reactive to disasters. It is anticipatory. Organizations that understand this shift are better positioned to protect long-term operational continuity."
-    ]
+      "The future of insurance pricing in India is not reactive to disasters. It is anticipatory. Organizations that understand this shift are better positioned to protect long-term operational continuity.",
+    ],
   },
-
   {
     slug: "cyber-risk-smes-2026",
     title: "Why SMEs Can No Longer Ignore Cyber Insurance",
     description:
       "Small and medium enterprises remain the fastest-growing segment of cyber breach exposure in 2026.",
     date: "January 2026",
+    publishedAt: "2026-01-21",
     readTime: "8 min read",
     image: "/images/articles/cyber-risk-sme.jpg",
     imageAlt:
@@ -142,7 +335,7 @@ export const articles: Article[] = [
       "Premium evaluation increasingly reflects internal controls. Employee training programs, endpoint security architecture, multi-factor authentication adoption, and vendor risk assessments now influence underwriting decisions.",
       "For SMEs, cyber insurance is no longer a discretionary add-on. It is an operational safeguard integrated into broader digital transformation strategy.",
       "The central question in 2026 is not whether a cyber incident will occur. It is whether the organization can absorb and recover from disruption without long-term financial instability.",
-      "Structured advisory engagement ensures that cyber coverage aligns with actual exposure rather than generic policy templates."
-    ]
-  }
+      "Structured advisory engagement ensures that cyber coverage aligns with actual exposure rather than generic policy templates.",
+    ],
+  },
 ];
