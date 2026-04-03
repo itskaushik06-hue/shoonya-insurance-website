@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Lottie from "lottie-react";
 
+type LottieAnimationData = {
+  ip?: number;
+  op?: number;
+};
+
 export default function HomeTransitionAnimation() {
-  const [animationData, setAnimationData] = useState<object | null>(null);
+  const [animationData, setAnimationData] = useState<LottieAnimationData | null>(
+    null,
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -25,12 +32,23 @@ export default function HomeTransitionAnimation() {
     };
   }, []);
 
+  const initialSegment = useMemo(() => {
+    if (!animationData?.op) {
+      return undefined;
+    }
+
+    const startFrame = 24;
+    const endFrame = Math.max(startFrame + 1, Math.floor(animationData.op) - 1);
+
+    return [startFrame, endFrame] as [number, number];
+  }, [animationData]);
+
   if (!animationData) {
     return (
       <img
         src="/videos/Animation1.svg"
         alt="Illustrated transition showing insurance made simple"
-        className="h-full w-full scale-[1.2] object-contain sm:scale-[1.02]"
+        className="h-full w-full scale-[1.14] object-contain sm:scale-[1.02]"
       />
     );
   }
@@ -40,8 +58,9 @@ export default function HomeTransitionAnimation() {
       animationData={animationData}
       loop={true}
       autoplay={true}
+      initialSegment={initialSegment}
       aria-label="Animated transition illustrating Shoonya Insurance Brokers support journey"
-      className="h-full w-full scale-[1.2] sm:scale-[1.02]"
+      className="h-full w-full scale-[1.14] sm:scale-[1.02]"
     />
   );
 }
