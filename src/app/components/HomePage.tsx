@@ -1,4 +1,10 @@
-import React from "react";
+import React, {
+  Suspense,
+  lazy,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   Shield,
   FileCheck,
@@ -9,7 +15,6 @@ import {
   Landmark,
   Quote,
 } from "lucide-react";
-
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CTAButtons } from "./CTAButtons";
@@ -18,8 +23,38 @@ import { Hero } from "./Hero";
 import { AboutSection } from "./AboutSection";
 import { font } from "../lib/typography";
 
+const HomeTransitionAnimation = lazy(() => import("./HomeTransitionAnimation"));
 
 export function HomePage() {
+  const animationSectionRef = useRef<HTMLElement | null>(null);
+  const [shouldLoadAnimation, setShouldLoadAnimation] = useState(false);
+
+  useEffect(() => {
+    const section = animationSectionRef.current;
+    if (!section || shouldLoadAnimation) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadAnimation(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "200px 0px",
+        threshold: 0.15,
+      },
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [shouldLoadAnimation]);
+
   return (
     <div className="min-h-screen bg-white page-transition">
       <Header currentPage="home" />
@@ -36,7 +71,10 @@ export function HomePage() {
 
 
       {/* ================= What We Do ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      <section
+        ref={animationSectionRef}
+        className="max-w-7xl mx-auto px-6 py-24"
+      >
         <div className="max-w-5xl mx-auto text-center mb-16">
           <h2 className="text-2xl">What We Do</h2>
           <p className={`mt-4 ${font("bodyMuted")}`}>
@@ -173,6 +211,49 @@ export function HomePage() {
               "By fostering true belonging, we build a stronger, more resilient organization.",
             ]}
           />
+        </div>
+      </section>
+
+      {/* ================= Transition Animation ================= */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center mb-12 space-y-4">
+          <h2 className="text-2xl">Insurance Made Simple</h2>
+          <p className={`max-w-2xl mx-auto ${font("bodyMuted")}`}>
+            Real people when you need them.
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto overflow-hidden">
+          <div className="relative aspect-[16/9] w-full overflow-hidden bg-white">
+            {shouldLoadAnimation ? (
+              <Suspense
+                fallback={
+                  <img
+                    src="/videos/Animation1.svg"
+                    alt="Illustrated transition showing insurance made simple"
+                    className="h-full w-full scale-[1.02] object-contain"
+                  />
+                }
+              >
+                <HomeTransitionAnimation />
+              </Suspense>
+            ) : (
+              <img
+                src="/videos/Animation1.svg"
+                alt="Illustrated transition showing insurance made simple"
+                className="h-full w-full scale-[1.02] object-contain"
+              />
+            )}
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 right-0 h-12 w-24 bg-white md:h-24 md:w-44"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 right-0 h-14 w-28 bg-gradient-to-tl from-white via-white to-transparent md:h-28 md:w-56"
+            />
+          </div>
         </div>
       </section>
 
