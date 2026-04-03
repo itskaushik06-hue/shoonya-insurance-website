@@ -30,7 +30,7 @@ export default function HomeTransitionAnimation() {
       <img
         src="/videos/Animation1.svg"
         alt="Illustrated transition showing insurance made simple"
-        className="h-full w-full scale-[1.02] object-contain"
+        className="h-full w-full scale-[1.2] object-contain sm:scale-[1.02]"
       />
     );
   }
@@ -41,7 +41,7 @@ export default function HomeTransitionAnimation() {
       loop={true}
       autoplay={true}
       aria-label="Animated transition illustrating Shoonya Insurance Brokers support journey"
-      className="h-full w-full scale-[1.02]"
+      className="h-full w-full scale-[1.2] sm:scale-[1.02]"
     />
   );
 }

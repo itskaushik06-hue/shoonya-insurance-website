@@ -224,14 +224,14 @@ export function HomePage() {
         </div>
 
         <div className="max-w-6xl mx-auto overflow-hidden">
-          <div className="relative aspect-[16/9] w-full overflow-hidden bg-white">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-white sm:aspect-[16/9]">
             {shouldLoadAnimation ? (
               <Suspense
                 fallback={
                   <img
                     src="/videos/Animation1.svg"
                     alt="Illustrated transition showing insurance made simple"
-                    className="h-full w-full scale-[1.02] object-contain"
+                    className="h-full w-full scale-[1.2] object-contain sm:scale-[1.02]"
                   />
                 }
               >
@@ -241,17 +241,17 @@ export function HomePage() {
               <img
                 src="/videos/Animation1.svg"
                 alt="Illustrated transition showing insurance made simple"
-                className="h-full w-full scale-[1.02] object-contain"
+                className="h-full w-full scale-[1.2] object-contain sm:scale-[1.02]"
               />
             )}
 
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 right-0 h-12 w-24 bg-white md:h-24 md:w-44"
+              className="pointer-events-none absolute bottom-0 right-0 h-10 w-20 bg-white md:h-24 md:w-44"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 right-0 h-14 w-28 bg-gradient-to-tl from-white via-white to-transparent md:h-28 md:w-56"
+              className="pointer-events-none absolute bottom-0 right-0 h-12 w-24 bg-gradient-to-tl from-white via-white to-transparent md:h-28 md:w-56"
             />
           </div>
         </div>
