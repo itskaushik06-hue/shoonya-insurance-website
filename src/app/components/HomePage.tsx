@@ -223,35 +223,62 @@ export function HomePage() {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto overflow-hidden">
-          <div className="relative aspect-[1/1] w-full overflow-hidden bg-white sm:aspect-[16/9]">
+        <div className="mx-auto max-w-6xl overflow-hidden">
+          <div className="mx-auto block max-w-sm sm:hidden">
+            <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[2rem] bg-white">
+              {shouldLoadAnimation ? (
+                <video
+                  className="h-full w-full object-contain object-center"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src="/videos/Phone_Screen_animation.mp4" type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src="/videos/Animation1.svg"
+                  alt="Illustrated transition showing insurance made simple"
+                  className="h-full w-full object-contain object-center"
+                />
+              )}
+            </div>
+          </div>
+
+          <div className="relative hidden aspect-[16/9] w-full overflow-hidden bg-white sm:block">
             {shouldLoadAnimation ? (
               <Suspense
                 fallback={
-                  <img
-                    src="/videos/Animation1.svg"
-                    alt="Illustrated transition showing insurance made simple"
-                    className="h-full w-full scale-[1.14] object-contain sm:scale-[1.02]"
-                  />
+                  <div className="flex h-full w-full items-center justify-center">
+                    <img
+                      src="/videos/Animation1.svg"
+                      alt="Illustrated transition showing insurance made simple"
+                      className="h-full w-full max-w-none object-contain object-center sm:scale-[1.02]"
+                    />
+                  </div>
                 }
               >
                 <HomeTransitionAnimation />
               </Suspense>
             ) : (
-              <img
-                src="/videos/Animation1.svg"
-                alt="Illustrated transition showing insurance made simple"
-                className="h-full w-full scale-[1.14] object-contain sm:scale-[1.02]"
-              />
+              <div className="flex h-full w-full items-center justify-center">
+                <img
+                  src="/videos/Animation1.svg"
+                  alt="Illustrated transition showing insurance made simple"
+                  className="h-full w-full max-w-none object-contain object-center sm:scale-[1.02]"
+                />
+              </div>
             )}
 
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 right-0 h-8 w-16 bg-white md:h-24 md:w-44"
+              className="pointer-events-none absolute bottom-0 right-0 h-24 w-44 bg-white"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 right-0 h-10 w-20 bg-gradient-to-tl from-white via-white to-transparent md:h-28 md:w-56"
+              className="pointer-events-none absolute bottom-0 right-0 h-28 w-56 bg-gradient-to-tl from-white via-white to-transparent"
             />
           </div>
         </div>

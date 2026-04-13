@@ -45,22 +45,26 @@ export default function HomeTransitionAnimation() {
 
   if (!animationData) {
     return (
-      <img
-        src="/videos/Animation1.svg"
-        alt="Illustrated transition showing insurance made simple"
-        className="h-full w-full scale-[1.14] object-contain sm:scale-[1.02]"
-      />
+      <div className="flex h-full w-full items-center justify-center">
+        <img
+          src="/videos/Animation1.svg"
+          alt="Illustrated transition showing insurance made simple"
+          className="h-full w-[118%] max-w-none object-contain object-center sm:w-full sm:scale-[1.02]"
+        />
+      </div>
     );
   }
 
   return (
-    <Lottie
-      animationData={animationData}
-      loop={true}
-      autoplay={true}
-      initialSegment={initialSegment}
-      aria-label="Animated transition illustrating Shoonya Insurance Brokers support journey"
-      className="h-full w-full scale-[1.14] sm:scale-[1.02]"
-    />
+    <div className="flex h-full w-full items-center justify-center">
+      <Lottie
+        animationData={animationData}
+        loop={true}
+        autoplay={true}
+        initialSegment={initialSegment}
+        aria-label="Animated transition illustrating Shoonya Insurance Brokers support journey"
+        className="h-full w-[118%] max-w-none shrink-0 sm:w-full sm:scale-[1.02]"
+      />
+    </div>
   );
 }
